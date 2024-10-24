@@ -2,6 +2,9 @@
 #include<vector>
 using namespace std;
 
+
+//time complexity nlogn
+//space complexity O(n)
 void merge(vector<int> &arr, int low, int mid, int high){
     vector<int> temp;
     int left = low;
