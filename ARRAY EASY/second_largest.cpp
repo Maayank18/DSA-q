@@ -2,43 +2,80 @@
 #include<vector>
 using namespace std;
 
-void bubble_sort(vector<int> &arr){
-    for(int i = 0; i<arr.size(); i++){
-        for(int j = i+1; j<arr.size(); j++){
-            if(arr[i]>arr[j]){
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+int SL(vector<int> &arr){
+    int largest = arr[0];
+    int sl = -1;
+    for(int i = 1; i<arr.size(); i++){
+        if(arr[i]>largest){
+            sl = largest;
+            largest = arr[i];
+        }
+        else if( arr[i]<largest && arr[i]>sl ){
+            sl = arr[i];
         }
     }
-    return;
+    return sl;
 }
 
 int main(){
     int n;
-    cout<<" enter the number of elements in array : ";
+    cout<<" enter the size of vector : ";
     cin>>n;
-
     vector<int> arr(n);
-    for(int i = 0; i<arr.size(); i++){
+    for( int i = 0; i<arr.size();i++){
         cin>>arr[i];
     }
 
-    bubble_sort(arr);
-
-    for(int i = n-2; i>=0; i--){
-        if(arr[i]!=arr[i+1]){
-            cout<<arr[i];
-            break;
-        }
-    }
+    int secondL = SL(arr);
+    cout<<" the second largest element is : "<<secondL;
     return 0;
 }
 
+
 // ----------------------------------------------------------------------------------------
 
-// WITHOUT SORTING( mayank method )
+// this is one of the brute force solution existing having a complexity of O(n^2)
+// #include<iostream>
+// #include<vector>
+// using namespace std;
+
+// void bubble_sort(vector<int> &arr){
+//     for(int i = 0; i<arr.size()-1; i++){
+//         for(int j = i+1; j<arr.size(); j++){
+//             if(arr[i]>arr[j]){
+//                 int temp = arr[i];
+//                 arr[i] = arr[j];
+//                 arr[j] = temp;
+//             }
+//         }
+//     }
+//     return;
+// }
+
+// int main() {
+//     int n;
+//     cout<<" enter the number of elements in array : ";
+//     cin>>n;
+
+//     vector<int> arr(n);
+//     for(int i = 0; i<arr.size(); i++){
+//         cin>>arr[i];
+//     }
+
+//     bubble_sort(arr);
+
+//     for(int i = n-2; i>=0; i--){
+//         if(arr[i]!=arr[i+1]){
+//             cout<<arr[i];
+//             break;
+//         }
+//     }
+//     return 0;
+// }
+
+// // ----------------------------------------------------------------------------------------
+
+// // WITHOUT SORTING( mayank method )
 // #include<iostream>
 // using namespace std;
 
