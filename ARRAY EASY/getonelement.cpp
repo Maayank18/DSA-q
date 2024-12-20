@@ -1,3 +1,9 @@
+// this code basically aims for finding the element that only occurs once but 
+//other elements occuring twice having a time comlexity of O(n) As the array is 
+//being traversed only once and space complexity of O(1) 
+// here in depth we are using the knowledge and workcase of xor 
+
+
 #include<iostream>
 using namespace std;
 
