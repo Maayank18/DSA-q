@@ -1,4 +1,5 @@
-//RE DO RE WATCH RE ATTEMPT
+//it is a brute force solution having a time cmplexity of nlog(n) + n
+//also having a space complexity of O(n)
 
 #include<bits/stdc++.h>
 
@@ -26,8 +27,8 @@ int main() {
 }
 
 
-//optimal solution will be having a code 
-
+// it is the code which basiaclly forms a loop and has a time complexity 
+// and space complexity O(n) and O(1) considering it to be most optimal 
 
 #include<bits/stdc++.h>
 
@@ -35,14 +36,15 @@ using namespace std;
 int removeDuplicates(int arr[], int n)
 {
   int i = 0;
-  for (int j = 1; j < n; j++) {
-    if (arr[i] != arr[j]) {
-      i++;
-      arr[i] = arr[j];
+    for (int j = 1; j < n; j++) {
+        if (arr[i] != arr[j]) { // Check if the current element is unique
+            i++;               // Move the unique element pointer
+            arr[i] = arr[j];   // Place the unique element in its new position
+        }
     }
-  }
-  return i + 1;
+    return i + 1; // Return the count of unique elements
 }
+
 int main() {
   int arr[] = {1,1,2,2,2,3,3};
   int n = sizeof(arr)/sizeof(arr[0]);
