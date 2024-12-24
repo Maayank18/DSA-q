@@ -46,7 +46,9 @@ int main() {
 }
 
 
-// code sahi hai guess the error
+// optimal solutio including a two pinter approach so it would behaving with a time 
+//complexity if O(n1+n2) and space complexity will be O(n1+n2) and that too when returning 
+// the amswr not in algorithm
 
 #include <iostream>
 #include <vector>
@@ -139,3 +141,7 @@ int main()
 
     return 0;
 }
+
+
+// also do revise for the intersection of set for once that tells about the common element
+// that would be present in both the sets
