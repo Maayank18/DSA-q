@@ -47,3 +47,6 @@ int main(){
     cout<<" Hence the lower bound is present at : "<<result<<endl;
     return 0;
 }
+
+//USING STL library for implementing lowerbound() 
+// implementation : - 
