@@ -17,6 +17,11 @@ int minimum_in_rotated(int arr[], int n) {
     while (low <= high) {
         int mid = low + (high - low) / 2;
 
+        if(arr[low] <= arr[high]){ // base case
+            ans = min(ans,arr[low]);
+            break;
+        }
+
         // If the subarray is sorted
         if (arr[low] <= arr[mid]) {
             ans = min(ans, arr[low]);
