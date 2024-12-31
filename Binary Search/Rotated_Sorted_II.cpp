@@ -13,7 +13,7 @@
 #include<iostream>
 using namespace std;
 
-int rotated_sorted_I( int arr[], int n, int t){
+int rotated_sorted_II( int arr[], int n, int t){
     int low = 0;
     int high = n-1;
     int ans = -1;
@@ -70,7 +70,7 @@ int main(){
     }
     cout<<endl;
 
-    int result =  rotated_sorted_I(arr,n,t);
+    int result =  rotated_sorted_II(arr,n,t);
 
     cout<<" Hence the upper bound is present at : "<<result<<endl;
     return 0;
