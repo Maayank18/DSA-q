@@ -57,18 +57,21 @@ int main()
 #include <map>
 using namespace std;
 
-map<int, int> mpp;
-for (int i = 0; i < v.size(); i++)
+int findMajorityElement(vector<int> arr)
 {
-    mpp[v[i]]++;
-}
-for (auto it : mpp)
-{
-    if (it.second > v.size() / 2)
+    map<int, int> mpp;
+    for (int i = 0; i < arr.size(); i++)
     {
-        return it.first;
+        mpp[arr[i]]++;
     }
-    return -1; // nothing found no element greater than n/2
+    for (auto it : mpp)
+    {
+        if (it.second > arr.size() / 2)
+        {
+            return it.first;
+        }
+        return -1; // nothing found no element greater than n/2
+    }
 }
 
 int main()
@@ -101,8 +104,8 @@ int moore_voting(int arr[], int n)
     int element;
     for(int i = 0; i<n; i++){
         if(count == 0){
-            count = 1;
             element = arr[i];
+            count = 1;
         }
         else if( arr[i] == element){
             count++;
