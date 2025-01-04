@@ -58,52 +58,52 @@
 // BTTER SOLUTION WILL DEFINITELY BE USING A O(n^2) and how is tha possible 
 // by using a hashmap data structure
 
-// #include<iostream>
-// #include<bits/stdc++.h>
-// #include<vector>
-// #include<set>
-// using namespace std;
+#include<iostream>
+#include<bits/stdc++.h>
+#include<vector>
+#include<set>
+using namespace std;
 
-// vector<vector<int>> sum_3(vector<int> arr){
-//     set<vector<int>> st;
-//     for(int i = 0; i<arr.size(); i++){
-//         set<int> hashset;
-//         for(int j =i+1; j<arr.size(); j++){
-//             int third_Value = -(arr[i] + arr[j]);
-//             if(hashset.find(third_Value) != hashset.end()){
-//                 vector<int> temp = { arr[i], arr[j], third_Value};
-//                 sort(temp.begin(),temp.end());
-//                 st.insert(temp);
-//             }
-//             hashset.insert(arr[j]);
-//         }
-//     }
+vector<vector<int>> sum_3(vector<int> arr){
+    set<vector<int>> st;
+    for(int i = 0; i<arr.size(); i++){
+        set<int> hashset;
+        for(int j =i+1; j<arr.size(); j++){
+            int third_Value = -(arr[i] + arr[j]);
+            if(hashset.find(third_Value) != hashset.end()){
+                vector<int> temp = { arr[i], arr[j], third_Value};
+                sort(temp.begin(),temp.end());
+                st.insert(temp);
+            }
+            hashset.insert(arr[j]);
+        }
+    }
 
-//     vector<vector<int>> ans(st.begin(),st.end());
-//     return ans;
-// }
+    vector<vector<int>> ans(st.begin(),st.end());
+    return ans;
+}
 
-// int main(){
-//     int n;
-//     cout<<" enter the size of vector array : ";
-//     cin>>n;
+int main(){
+    int n;
+    cout<<" enter the size of vector array : ";
+    cin>>n;
 
-//     vector<int> arr(n);
-//     cout<<" enter the elements of array : ";
-//     for(int i = 0; i<n; i++){
-//         cin>>arr[i];
-//     }
+    vector<int> arr(n);
+    cout<<" enter the elements of array : ";
+    for(int i = 0; i<n; i++){
+        cin>>arr[i];
+    }
 
-//     vector<vector<int>> result = sum_3(arr);
+    vector<vector<int>> result = sum_3(arr);
 
-//     for (int i = 0; i < result.size(); i++) {
-//         for (int j = 0; j < result[i].size(); j++) {
-//             cout << result[i][j] << " ";  // Print each element in the row
-//         }
-//         cout << endl;  // Move to the next row
-//     }
-//     return 0;
-// }
+    for (int i = 0; i < result.size(); i++) {
+        for (int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j] << " ";  // Print each element in the row
+        }
+        cout << endl;  // Move to the next row
+    }
+    return 0;
+}
 
 
 // MOST OPTIMAL SOLUTION ISOMEWHAT A POINTER APPROACH 
@@ -166,3 +166,4 @@ int main(){
     }
     return 0;
 }
+
