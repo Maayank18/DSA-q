@@ -5,74 +5,74 @@
 //BRUTE FORCE SOLUTION INCLUDE -> HASHING TO KEEP THE COUNTER AND AS SOON AS THE 
 // NODE RE APPEARS IT WILL RETURN US THE NODE
 
-// #include<iostream>
-// #include<map>
-// using namespace std;
+#include<iostream>
+#include<map>
+using namespace std;
 
-// struct node{
-//     int data;
-//     node * next;
-// };
+struct node{
+    int data;
+    node * next;
+};
 
-// void traversal(node * head){
-//     node * temp = head;
-//     while( temp != NULL){
-//         cout<<temp -> data<<" ";
-//         temp = temp -> next;
-//     }
-// }
+void traversal(node * head){
+    node * temp = head;
+    while( temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+}
 
-// int starting_loop( node * head){
-//     map<node*,int> mpp;
-//     node * temp = head;
+int starting_loop( node * head){
+    map<node*,int> mpp;
+    node * temp = head;
 
-//     while( temp != NULL){
-//         if( mpp.find(temp) != mpp.end()){
-//             return temp->data;
-//         }else{
-//             mpp[temp] = 1;
-//             temp = temp -> next;
-//         }
-//     }
-//     return -1;
-// }
-
-
-
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
-//     node* fourth = new node;
-//     node* fifth = new node;
+    while( temp != NULL){
+        if( mpp.find(temp) != mpp.end()){
+            return temp->data;
+        }else{
+            mpp[temp] = 1;
+            temp = temp -> next;
+        }
+    }
+    return -1;
+}
 
 
-//     // Initialize data and next pointers for each node
-//     head->data = 10;
-//     head->next = first;
 
-//     first->data = 20;
-//     first->next = second;
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
+    node* fourth = new node;
+    node* fifth = new node;
 
-//     second->data = 30;
-//     second->next = third;
 
-//     third->data = 40;
-//     third->next = fourth; 
+    // Initialize data and next pointers for each node
+    head->data = 10;
+    head->next = first;
 
-//     fourth->data = 50;
-//     fourth->next = fifth;
+    first->data = 20;
+    first->next = second;
 
-//     fifth->data = 60;
-//     fifth->next = third;
+    second->data = 30;
+    second->next = third;
 
-//     cout<<endl;
+    third->data = 40;
+    third->next = fourth; 
 
-//     cout<<" the starting point in loop in LL is "<<starting_loop(head)<<endl;
+    fourth->data = 50;
+    fourth->next = fifth;
 
-//     return 0;
-// }
+    fifth->data = 60;
+    fifth->next = third;
+
+    cout<<endl;
+
+    cout<<" the starting point in loop in LL is "<<starting_loop(head)<<endl;
+
+    return 0;
+}
 
 
 // Inorder to OPTIMISE TH EALGORITHM we would be using hare and tortoise algorithm
