@@ -1,164 +1,173 @@
-// #include<iostream>
-// using namespace std;
+// BRUTE FORCE SOLUTION -> in which we basically maintain a counter to count sll nodes
+// and then find the middle element 
+//TIME COMPLEXITY -> almost O(2N)
 
-// struct node{
-//     int data;
-//     node * next;
-// };
+#include<iostream>
+using namespace std;
 
-// void traversal(node * head){
-//     node * temp = head;
-//     while( temp != NULL){
-//         cout<<temp -> data<<" ";
-//         temp = temp -> next;
-//     }
-// }
+struct node{
+    int data;
+    node * next;
+};
 
-// int count( node* head){
-//     node * ptr = head;
-//     int count = 0;
-//     while( ptr != NULL){
-//         count++;
-//         ptr = ptr -> next;
-//     }
-//     return count;
-// }
+void traversal(node * head){
+    node * temp = head;
+    while( temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+}
 
-// int function( node* head){
-//     int middle = (count(head))/2;
-//     node * move = head;
-//     for (int i = 0; i < middle; i++) { // Move `middle` steps from the head
-//         move = move->next;
-//     }
-//     return move->data;
-// }
+int count( node* head){
+    node * ptr = head;
+    int count = 0;
+    while( ptr != NULL){
+        count++;
+        ptr = ptr -> next;
+    }
+    return count;
+}
 
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
+int function( node* head){
 
-//     // Initialize data and next pointers for each node
-//     head->data = 10;
-//     head->next = first;
+    if( head == NULL || head -> next == NULL){    // BASE / EDGE CASE
+        return head->data;                 // we can also return -1 based on design
+    }
 
-//     first->data = 20;
-//     first->next = second;
+    int middle = (count(head))/2;
+    node * move = head;
+    for (int i = 0; i < middle; i++) { // Move `middle` steps from the head
+        move = move->next;
+    }
+    return move->data;
+}
 
-//     second->data = 30;
-//     second->next = third;
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
 
-//     third->data = 40;
-//     third->next = nullptr; // Last node points to nullptr
+    // Initialize data and next pointers for each node
+    head->data = 10;
+    head->next = first;
 
-//     traversal(head);
-//     cout<<endl;
-//     int numberOFelements = count(head);
-//     cout<<" number of nodes are : "<<numberOFelements<<endl;
-//     int middle_element = function(head);
-//     cout<<" the middle element is : "<<middle_element<<endl;
+    first->data = 20;
+    first->next = second;
 
-//     return 0;
-// }
+    second->data = 30;
+    second->next = third;
+
+    third->data = 40;
+    third->next = nullptr; // Last node points to nullptr
+
+    traversal(head);
+    cout<<endl;
+    int numberOFelements = count(head);
+    cout<<" number of nodes are : "<<numberOFelements<<endl;
+    int middle_element = function(head);
+    cout<<" the middle element is : "<<middle_element<<endl;
+
+    return 0;
+}
 
 
 
 // another method which may be better or be brute can be this which will be taking 
 // a TIME COMPLEXITY OF O(n) + O(n/2)
 
-// #include<iostream>
-// using namespace std;
+#include<iostream>
+using namespace std;
 
-// struct node{
-//     int data;
-//     node * next;
-// };
+struct node{
+    int data;
+    node * next;
+};
 
 
-// int traversal(node * head){
-//     node * temp = head;
-//     while( temp != NULL){
-//         cout<<temp -> data<<" ";
-//         temp = temp -> next;
-//     }
-// }
+void traversal(node * head){
+    node * temp = head;
+    while( temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+}
 
-// int medianNODE(node *head) {
-//     if (head == NULL) { // Handle the case of an empty list
-//         return -1; // or throw an exception, based on your design
-//     }
+int medianNODE(node *head) {
+    if (head == NULL) { // Handle the case of an empty list
+        return -1; // or throw an exception, based on your design
+    }
 
-//     node *temp = head;
-//     int count = 0;
+    node *temp = head;
+    int count = 0;
 
-//     // Count the total number of nodes
-//     while (temp != NULL) {
-//         temp = temp->next;
-//         count++;
-//     }
+    // Count the total number of nodes
+    while (temp != NULL) {
+        temp = temp->next;
+        count++;
+    }
 
-//     // Calculate the middle index
-//     int middle = count / 2; // (0-based index for middle node)
+    // Calculate the middle index
+    int middle = count / 2; // (0-based index for middle node)
 
-//     temp = head; // Reset temp to head
+    temp = head; // Reset temp to head
 
-//     // Traverse to the middle node
-//     for (int i = 0; i < middle; i++) {
-//         temp = temp->next;
-//     }
+    // Traverse to the middle node
+    for (int i = 0; i < middle; i++) {
+        temp = temp->next;
+    }
 
-//     // Return the data of the middle node
-//     return temp->data;
-// }
+    // Return the data of the middle node
+    return temp->data;
+}
 
-// node * medianNODE( node * head){
-//     node * temp = head;
-//     int count = 0;
-//     while( temp != NULL){
-//         temp = temp -> next;
-//         count++;
-//     }
+int medianNODE( node * head){
+    node * temp = head;
+    int count = 0;
+    while( temp != NULL){
+        temp = temp -> next;
+        count++;
+    }
     
-//     int middle = (count/2);
-//     temp = head;
-//     while( temp != head){
-//         middle = middle-1;
-//         if(middle == 0){
-//             break;
-//         }
-//         temp = temp -> next;
-//     }
-//     return temp;
-// }
+    int middle = (count/2);
+    temp = head;
+    while( temp != head){
+        middle = middle-1;
+        if(middle == 0){
+            break;
+        }
+        temp = temp -> next;
+    }
+    return temp->data;
+}
 
 
 
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
 
-    // Initialize data and next pointers for each node
-//     head->data = 10;
-//     head->next = first;
+    //Initialize data and next pointers for each node
+    head->data = 10;
+    head->next = first;
 
-//     first->data = 20;
-//     first->next = second;
+    first->data = 20;
+    first->next = second;
 
-//     second->data = 30;
-//     second->next = third;
+    second->data = 30;
+    second->next = third;
 
-//     third->data = 40;
-//     third->next = nullptr; // Last node points to nullptr
+    third->data = 40;
+    third->next = nullptr; // Last node points to nullptr
 
-//     traversal(head);
-//     cout<<endl;
+    traversal(head);
+    cout<<endl;
 
-//     cout<<" the median node is : "<<medianNODE(head)<<endl;
-//     return 0;
-// }
+    cout<<" the median node is : "<<medianNODE(head)<<endl;
+    return 0;
+}
 
 
 

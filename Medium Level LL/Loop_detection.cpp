@@ -18,19 +18,19 @@ void traversal(node * head){
 // BRUTE FORCE SOLUTION INVOLVING A EXTERNAL DATA TYPE THAT IS A MAP AND 
 // TIME COMPLEXITY WILL BE LOG WHICH WE HAVE TO REWATCH AND UNDERSTAND 
 
-// bool findLoop( node * head){     
-//     map<node*,int> mpp;
-//     node * temp = head;
-//     while( temp != NULL){
-//         if( mpp.find(temp) != mpp.end()){
-//             return true;
-//         }else{
-//             mpp[temp] = 1;
-//             temp = temp -> next;
-//         }
-//     }
-//     return false;
-// }
+bool findLoop( node * head){     
+    map<node*,int> mpp;
+    node * temp = head;
+    while( temp != NULL){
+        if( mpp.find(temp) != mpp.end()){
+            return true;
+        }else{
+            mpp[temp] = 1;
+            temp = temp -> next;
+        }
+    }
+    return false;
+}
 
 
 // OPTIMAL SOLUTION WILL BE INVOLVING HARE AND TORTOISE ALGORITHM 

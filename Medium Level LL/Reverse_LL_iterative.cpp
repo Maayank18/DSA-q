@@ -22,6 +22,11 @@ void traversal(node * head){
 }
 
 void reversingg( node * head){
+
+    if( head == NULL ){                 // base / edge case 
+        return;
+    }
+
     node * temp = head;
     stack<int> st;
     while( temp != NULL){

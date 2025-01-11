@@ -8,61 +8,61 @@
 // SPACE COMPLLEXITY -> O(N)
 
 
-// #include<iostream>
-// #include<stack>
-// using namespace std;
+#include<iostream>
+#include<stack>
+using namespace std;
 
-// struct node{
-//     int data;
-//     node * next;
-// };
+struct node{
+    int data;
+    node * next;
+};
 
-// bool check_if_pallindrome( node * head){
-//     node * temp = head;
-//     stack<int> st;
+bool check_if_pallindrome( node * head){
+    node * temp = head;
+    stack<int> st;
 
-//     while(temp!=NULL){
-//         st.push(temp->data);
-//         temp = temp -> next;
-//     }
+    while(temp!=NULL){
+        st.push(temp->data);
+        temp = temp -> next;
+    }
 
-//     temp = head;
-//     while( temp != NULL){
-//         if(temp->data != st.top()){
-//             return false;
-//         }else{
-//             st.pop();
-//             temp = temp -> next;
-//         }
-//     }
-//     return true;
-// }
+    temp = head;
+    while( temp != NULL){
+        if(temp->data != st.top()){
+            return false;
+        }else{
+            st.pop();
+            temp = temp -> next;
+        }
+    }
+    return true;
+}
 
 
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
 
-//     // Initialize data and next pointers for each node
-//     head->data = 10;
-//     head->next = first;
+    // Initialize data and next pointers for each node
+    head->data = 10;
+    head->next = first;
 
-//     first->data = 20;
-//     first->next = second;
+    first->data = 20;
+    first->next = second;
 
-//     second->data = 20;
-//     second->next = third;
+    second->data = 20;
+    second->next = third;
 
-//     third->data = 10;
-//     third->next = nullptr; // Last node points to nullptr
+    third->data = 10;
+    third->next = nullptr; // Last node points to nullptr
 
-//     // traversal(head);
-//     cout<<endl;
-//     cout<<" Is the linked List pallindrome : "<<check_if_pallindrome(head)<<endl;
-//     return 0;
-// }
+    // traversal(head);
+    cout<<endl;
+    cout<<" Is the linked List pallindrome : "<<check_if_pallindrome(head)<<endl;
+    return 0;
+}
 
 
 // BETTER SOLUTION IS SOMEWHAT WHERE WE DONT DONT EXTERNAL DATA STRUCTURE 

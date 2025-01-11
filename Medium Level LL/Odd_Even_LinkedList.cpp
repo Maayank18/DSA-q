@@ -12,79 +12,79 @@
 // TIME COMPLEXITY -> O(N/2) + O(N/2) + O(N) = O(2N)
 // SPACE COMPLEXITY -> O(N) due to vectors
 
-// #include<iostream>
-// #include<vector>
-// using namespace std;
+#include<iostream>
+#include<vector>
+using namespace std;
 
-// struct node{
-//     int data;
-//     node * next;
-// };
-
-
-// void traversal(node * head){
-//     node * temp = head;
-//     while( temp != NULL){
-//         cout<<temp -> data<<" ";
-//         temp = temp -> next;
-//     }
-// }
-
-// node * Odd_Even( node * head){
-//     vector<int> sorted_odd_even_list;
-//     node * temp = head;
-
-//     while(temp!= NULL && temp -> next != NULL){
-//         sorted_odd_even_list.push_back(temp->data);
-//         temp = temp -> next -> next;
-//     }
-//     if(temp) sorted_odd_even_list.push_back(temp->data);
-
-//     temp = head -> next;
-//     while( temp != NULL && temp -> next !=NULL){
-//         sorted_odd_even_list.push_back(temp->data);
-//         temp = temp-> next-> next;
-//     }
-//     if(temp) sorted_odd_even_list.push_back(temp->data);
+struct node{
+    int data;
+    node * next;
+};
 
 
-//     temp = head;
-//     int i = 0;
-//     while( temp != NULL){
-//         temp->data = sorted_odd_even_list[i];
-//         i++;
-//         temp = temp -> next;
-//     }
-//     return head;
-// }
+void traversal(node * head){
+    node * temp = head;
+    while( temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+}
+
+node * Odd_Even( node * head){
+    vector<int> sorted_odd_even_list;
+    node * temp = head;
+
+    while(temp!= NULL && temp -> next != NULL){
+        sorted_odd_even_list.push_back(temp->data);
+        temp = temp -> next -> next;
+    }
+    if(temp) sorted_odd_even_list.push_back(temp->data);
+
+    temp = head -> next;
+    while( temp != NULL && temp -> next !=NULL){
+        sorted_odd_even_list.push_back(temp->data);
+        temp = temp-> next-> next;
+    }
+    if(temp) sorted_odd_even_list.push_back(temp->data);
 
 
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
+    temp = head;
+    int i = 0;
+    while( temp != NULL){
+        temp->data = sorted_odd_even_list[i];
+        i++;
+        temp = temp -> next;
+    }
+    return head;
+}
 
-//     // Initialize data and next pointers for each node
-//     head->data = 10;
-//     head->next = first;
 
-//     first->data = 20;
-//     first->next = second;
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
 
-//     second->data = 30;
-//     second->next = third;
+    // Initialize data and next pointers for each node
+    head->data = 10;
+    head->next = first;
 
-//     third->data = 40;
-//     third->next = nullptr; // Last node points to nullptr
+    first->data = 20;
+    first->next = second;
 
-//     traversal(head);
-//     cout<<endl;
-//     node * newest = Odd_Even(head);
-//     traversal(newest);
+    second->data = 30;
+    second->next = third;
 
-//     return 0;
-// }
+    third->data = 40;
+    third->next = nullptr; // Last node points to nullptr
+
+    traversal(head);
+    cout<<endl;
+    node * newest = Odd_Even(head);
+    traversal(newest);
+
+    return 0;
+}
 
 
 // A better solution will be better in terms of space as we wont be using any 

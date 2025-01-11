@@ -22,19 +22,19 @@ void traversal(node * head){
     }
 }
 
-int starting_loop( node * head){
+node * starting_loop( node * head){
     map<node*,int> mpp;
     node * temp = head;
 
     while( temp != NULL){
         if( mpp.find(temp) != mpp.end()){
-            return temp->data;
+            return temp;
         }else{
             mpp[temp] = 1;
             temp = temp -> next;
         }
     }
-    return -1;
+    return NULL;
 }
 
 
