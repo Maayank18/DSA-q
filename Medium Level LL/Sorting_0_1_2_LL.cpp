@@ -6,84 +6,84 @@
 // TIME COMPLEXITY -> O(2N)
 // SPACE COMPLEXITY -> O(1)
 
-// #include<iostream>
-// using namespace std;
+#include<iostream>
+using namespace std;
 
-// struct node{
-//     int data;
-//     node * next;
-// };
+struct node{
+    int data;
+    node * next;
+};
 
-// void traversal(node * head){
-//     node * temp = head;
-//     while( temp != NULL){
-//         cout<<temp -> data<<" ";
-//         temp = temp -> next;
-//     }
-// }
+void traversal(node * head){
+    node * temp = head;
+    while( temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+}
 
-// node * sorting_0_1_2(node * head){
-//     node * temp = head;
-//     int count0 = 0;
-//     int count1 = 0;
-//     int count2 = 0;
+node * sorting_0_1_2(node * head){
+    node * temp = head;
+    int count0 = 0;
+    int count1 = 0;
+    int count2 = 0;
 
-//     while( temp != NULL){
-//         if( temp->data == 0){
-//             count0++;
-//         }else if( temp->data == 1){
-//             count1++;
-//         }else{
-//             count2++;
-//         }
-//         temp = temp -> next;
-//     }
+    while( temp != NULL){
+        if( temp->data == 0){
+            count0++;
+        }else if( temp->data == 1){
+            count1++;
+        }else{
+            count2++;
+        }
+        temp = temp -> next;
+    }
 
-//     temp = head;
-//     while( temp != NULL){
-//        if(count0){
-//         temp -> data = 0;
-//         count0--;
-//        }else if( count1){
-//         temp -> data = 1;
-//         count1--;
-//        }else{
-//         temp -> data = 2;
-//         count2--;
-//        }
-//        temp = temp -> next;
-//     }
-//     return head;
-// }
+    temp = head;
+    while( temp != NULL){
+       if(count0){
+        temp -> data = 0;
+        count0--;
+       }else if( count1){
+        temp -> data = 1;
+        count1--;
+       }else{
+        temp -> data = 2;
+        count2--;
+       }
+       temp = temp -> next;
+    }
+    return head;
+}
 
 
 
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
 
-//     // Initialize data and next pointers for each node
-//     head->data = 1;
-//     head->next = first;
+    // Initialize data and next pointers for each node
+    head->data = 1;
+    head->next = first;
 
-//     first->data = 0;
-//     first->next = second;
+    first->data = 0;
+    first->next = second;
 
-//     second->data = 2;
-//     second->next = third;
+    second->data = 2;
+    second->next = third;
 
-//     third->data = 1;
-//     third->next = nullptr; // Last node points to nullptr
-//     traversal(head);
-//     // traversal(head);
-//     cout<<endl;
-//     head = sorting_0_1_2(head);
-//     traversal(head);
+    third->data = 1;
+    third->next = nullptr; // Last node points to nullptr
+    traversal(head);
+    // traversal(head);
+    cout<<endl;
+    head = sorting_0_1_2(head);
+    traversal(head);
     
-//     return 0;
-// }
+    return 0;
+}
 
 
 
@@ -91,6 +91,9 @@
 // IT WITH ONE PASS APPROACH 
 
 // check for if there is only 0 and 2 UNDERSTAND HOW TO FORM THE CONNECTION
+
+// TIME COMPLEXITY -> O(N)
+// SPACE COMPLEXITY -> O(1)
 
 #include<iostream>
 using namespace std;

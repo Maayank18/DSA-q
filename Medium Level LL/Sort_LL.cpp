@@ -10,84 +10,84 @@
 // SPACE COMPLEXITY -> O(N) as using additional space for vectors
 
 
-// #include<iostream>
-// #include<vector>
-// using namespace std;
+#include<iostream>
+#include<vector>
+using namespace std;
 
-// struct node{
-//     int data;
-//     node * next;
-// };
-
-
-// void traversal(node * head){
-//     node * temp = head;
-//     while( temp != NULL){
-//         cout<<temp -> data<<" ";
-//         temp = temp -> next;
-//     }
-// }
-
-// void bubble_sort( vector<int> &arr){
-//     int n = arr.size();
-//     for( int i = 0; i<n-1; i++){
-//         for( int j = 0; j<n-i-1; j++){
-//             if( arr[j]>arr[j+1]){
-//                 int temp = arr[j];
-//                 arr[j] = arr[j+1];
-//                 arr[j+1] = temp;
-//             }
-//         }
-//     }
-// }
-
-// node * sorting( node * head){
-//     vector<int> arr;
-//     node * temp = head;
-
-//     while(temp != NULL){
-//         arr.push_back(temp->data);
-//         temp = temp -> next;
-//     }
-//     bubble_sort(arr); 
-
-//     temp = head;
-//     int i = 0;
-//     while(temp != NULL){
-//         temp->data = arr[i];
-//         i++;
-//         temp = temp -> next;
-//     }   
-//     return head;
-// }
+struct node{
+    int data;
+    node * next;
+};
 
 
-// int main(){
-//     node* head = new node;
-//     node* first = new node;
-//     node* second = new node;
-//     node* third = new node;
+void traversal(node * head){
+    node * temp = head;
+    while( temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+}
 
-//     // Initialize data and next pointers for each node
-//     head->data = 20;
-//     head->next = first;
+void bubble_sort( vector<int> &arr){
+    int n = arr.size();
+    for( int i = 0; i<n-1; i++){
+        for( int j = 0; j<n-i-1; j++){
+            if( arr[j]>arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
 
-//     first->data = 30;
-//     first->next = second;
+node * sorting( node * head){
+    vector<int> arr;
+    node * temp = head;
 
-//     second->data = 40;
-//     second->next = third;
+    while(temp != NULL){
+        arr.push_back(temp->data);
+        temp = temp -> next;
+    }
+    bubble_sort(arr); 
 
-//     third->data = 10;
-//     third->next = nullptr; // Last node points to nullptr
+    temp = head;
+    int i = 0;
+    while(temp != NULL){
+        temp->data = arr[i];
+        i++;
+        temp = temp -> next;
+    }   
+    return head;
+}
 
-//     traversal(head);
-//     cout<<endl;
-//     head = sorting(head);
-//     traversal(head);
 
-//     return 0;
-// }
+int main(){
+    node* head = new node;
+    node* first = new node;
+    node* second = new node;
+    node* third = new node;
+
+    // Initialize data and next pointers for each node
+    head->data = 20;
+    head->next = first;
+
+    first->data = 30;
+    first->next = second;
+
+    second->data = 40;
+    second->next = third;
+
+    third->data = 10;
+    third->next = nullptr; // Last node points to nullptr
+
+    traversal(head);
+    cout<<endl;
+    head = sorting(head);
+    traversal(head);
+
+    return 0;
+}
 
 
 // The better and optimal solution tries to break the linked list in two halfs and 
