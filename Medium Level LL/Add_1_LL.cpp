@@ -51,7 +51,7 @@ node * Add_1(node * head){
             temp->data = 0;
         }
 
-
+        // incase all nodes are over and we still have a carry
         if(temp->next == NULL && carry == 1){
         node * newNode = new node;
         newNode->data = carry;
