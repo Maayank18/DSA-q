@@ -7,52 +7,52 @@
 // BRUTE FORCE SOLUTION -> somewhere we can think of iteration in form of nested loop
 // TC  -> O(n^3) and to store and confirm unique element we can use set data structure
 
-// #include<iostream>
-// #include<bits/stdc++.h>
-// #include<vector>
-// #include<set>
-// using namespace std;
+#include<iostream>
+#include<bits/stdc++.h>
+#include<vector>
+#include<set>
+using namespace std;
 
-// vector<vector<int>> sum_3(vector<int> arr){
-//     int size = arr.size();
-//     set<vector<int>> st;
+vector<vector<int>> sum_3(vector<int> arr){
+    int size = arr.size();
+    set<vector<int>> st;
 
-//     for(int i = 0; i<size; i++){
-//         for(int j = i+1; j<size; j++){
-//             for(int k = j+1; k<size; k++){
-//                 if( arr[i] + arr[j] + arr[k] == 0){
-//                    vector<int> temp = { arr[i], arr[j], arr[k]};
-//                    sort(temp.begin(),temp.end());
-//                    st.insert(temp);
-//                 }
-//             }
-//         }
-//     }
-//     vector<vector<int>> ans(st.begin(),st.end());
-//     return ans;
-// }
+    for(int i = 0; i<size; i++){
+        for(int j = i+1; j<size; j++){
+            for(int k = j+1; k<size; k++){
+                if( arr[i] + arr[j] + arr[k] == 0){
+                   vector<int> temp = { arr[i], arr[j], arr[k]};
+                   sort(temp.begin(),temp.end());
+                   st.insert(temp);
+                }
+            }
+        }
+    }
+    vector<vector<int>> ans(st.begin(),st.end());
+    return ans;
+}
 
-// int main(){
-//     int n;
-//     cout<<" enter the size of vector array : ";
-//     cin>>n;
+int main(){
+    int n;
+    cout<<" enter the size of vector array : ";
+    cin>>n;
 
-//     vector<int> arr(n);
-//     cout<<" enter the elements of array : ";
-//     for(int i = 0; i<n; i++){
-//         cin>>arr[i];
-//     }
+    vector<int> arr(n);
+    cout<<" enter the elements of array : ";
+    for(int i = 0; i<n; i++){
+        cin>>arr[i];
+    }
 
-//     vector<vector<int>> result = sum_3(arr);
+    vector<vector<int>> result = sum_3(arr);
 
-//     for (int i = 0; i < result.size(); i++) {
-//         for (int j = 0; j < result[i].size(); j++) {
-//             cout << result[i][j] << " ";  // Print each element in the row
-//         }
-//         cout << endl;  // Move to the next row
-//     }
-//     return 0;
-// }
+    for (int i = 0; i < result.size(); i++) {
+        for (int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j] << " ";  // Print each element in the row
+        }
+        cout << endl;  // Move to the next row
+    }
+    return 0;
+}
 
 
 // BTTER SOLUTION WILL DEFINITELY BE USING A O(n^2) and how is tha possible 
