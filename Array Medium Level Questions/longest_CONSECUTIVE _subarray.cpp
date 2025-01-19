@@ -8,9 +8,9 @@
 #include<iostream>
 using namespace std;
 
-longest = 1;
+int longest = 1;
 for( int i = 0; i<arr.size(); i++){
-    x = arr[i]; //taking the first element to start longets subarray
+    int x = arr[i]; //taking the first element to start longets subarray
     count = 1;  //even after taking one element our counter will have one elment 
     while( ls(arr,x+1) == true){  // linear searching if we have x+1, .. other terms 
         count++;
