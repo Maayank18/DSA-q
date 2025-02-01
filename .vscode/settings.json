@@ -59,7 +59,13 @@
   "files.associations": {
     "iostream": "cpp",
     "cmath": "cpp",
-    "new": "cpp"
+    "new": "cpp",
+    "bitset": "cpp",
+    "vector": "cpp",
+    "memory": "cpp",
+    "system_error": "cpp",
+    "thread": "cpp",
+    "typeindex": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }
