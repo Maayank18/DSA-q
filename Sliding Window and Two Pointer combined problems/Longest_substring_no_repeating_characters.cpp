@@ -16,37 +16,38 @@
 // all the possible subarrays and check the max length and return it
 //Time Complexity -> o(n^2) two loops
 //Space Complexity -> o(256) because i am storing it in ahsh array of this size
-// #include<iostream>
-// #include<string>
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
 
-// int LongestStringNonRepeated( string s){
-//     int n = s.size();
-//     int maxlen = INT_MIN;
-//     for(int i = 0; i<n; i++){
-//         int hash[255] = {0};
-//         for( int j = i; j<n; j++){
-//             if(hash[s[j]] == 1) break;
-//             hash[s[j]] = 1;
-//             maxlen = max(j-i+1,maxlen);
-//         }
-//     }
-//     return maxlen;
-// }
+int LongestStringNonRepeated( string s){
+    int n = s.size();
+    int maxlen = INT_MIN;
+    for(int i = 0; i<n; i++){
+        int hash[255] = {0};
+        for( int j = i; j<n; j++){
+            if(hash[s[j]] == 1) break;
+            hash[s[j]] = 1;
+            maxlen = max(j-i+1,maxlen);
+        }
+    }
+    return maxlen;
+}
 
-// int main() {
-//   string str = "abcdbefa";
-//   cout << "The length of the longest substring without repeating characters is " << 
-//   LongestStringNonRepeated(str);
-//   return 0;
-// }
+int main() {
+  string str = "abcdbefa";
+  cout << "The length of the longest substring without repeating characters is " << 
+  LongestStringNonRepeated(str);
+  return 0;
+}
 
 
 // A better and a brute force solution approach can be like using a sliding window
 // and a two pinter approach where we can work upon certain frame and windows and 
 // iterate accordingly
-
+// TIME COMPLEXITY -> O(N) only a while loop 
+//SPACE COMPLEXITY -> O(256) hash arr of 256 size
 #include<iostream>
 #include<string>
 #include<bits/stdc++.h>
@@ -60,9 +61,9 @@ int LongestStringNonRepeated( string s){
     int maxlen = 0;
 
     while(right<n){
-        if(hash[s[right]] != 0){
-            if(hash[s[right]] >= left){
-                left = hash[s[right]]+1;
+        if(hash[s[right]] != 0){  // the chaarcters contains alraedy
+            if(hash[s[right]] >= left){ // confirming the index of already contained
+                left = hash[s[right]]+1; // putting left to next index of conatinde
             }
         }
 
