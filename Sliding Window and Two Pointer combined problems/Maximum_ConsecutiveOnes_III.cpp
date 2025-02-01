@@ -7,77 +7,77 @@
 // 8 (longest valid subarray)
 
 
-// #include<iostream>
-// #include<vector>
-// using namespace std;
+#include<iostream>
+#include<vector>
+using namespace std;
 
-// int lengthLongestSubArrayWith1(vector<int> arr, int k){
-//     int n = arr.size();
-//     int maxlen = 0;
+int lengthLongestSubArrayWith1(vector<int> arr, int k){
+    int n = arr.size();
+    int maxlen = 0;
 
-//     for(int i = 0; i<n; i++){
-//         int zeroCounter = 0;
-//         for(int j = i; j<n; j++){
-//             if(arr[j] == 0){
-//                 zeroCounter++;
-//             }
-//             if(zeroCounter<=k){
-//                 maxlen = max(maxlen,j-i+1);
-//             }else{
-//                 break;
-//             }
-//         }
-//     }
-//     return maxlen;
-// }
+    for(int i = 0; i<n; i++){
+        int zeroCounter = 0;
+        for(int j = i; j<n; j++){
+            if(arr[j] == 0){
+                zeroCounter++;
+            }
+            if(zeroCounter<=k){
+                maxlen = max(maxlen,j-i+1);
+            }else{
+                break;
+            }
+        }
+    }
+    return maxlen;
+}
 
-// int main() {
-//     vector<int> arr = {1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0};
-//     int k = 2;
+int main() {
+    vector<int> arr = {1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0};
+    int k = 2;
     
-//     cout << "Longest subarray length: " << lengthLongestSubArrayWith1(arr, k) << endl;
-//     return 0;
-// }
+    cout << "Longest subarray length: " << lengthLongestSubArrayWith1(arr, k) << endl;
+    return 0;
+}
 
 
 // This is the better solution where we would be using a sliding window and
 // two pointer approach 
 // TIME COMPLEXITY -> O(N) + O(N) = O(2N)
 // SPACE COMPLEXITY -> O(1)
-// #include<iostream>
-// #include<vector>
-// using namespace std;
+#include<iostream>
+#include<vector>
+using namespace std;
 
-// int lengthLongestSubArrayWith1(vector<int> arr, int k){
-//     int n = arr.size();
-//     int l = 0;
-//     int r = 0;
-//     int maxlen = 0;
-//     int zeroC = 0;
+int lengthLongestSubArrayWith1(vector<int> arr, int k){
+    int n = arr.size();
+    int l = 0;
+    int r = 0;
+    int maxlen = 0;
+    int zeroC = 0;
 
-//     while(r<n){
-//         if(arr[r] == 0){
-//             zeroC++;
-//         }
-//         while(zeroC>k){
-//             if(arr[l] == 0) zeroC--;
-//             l++;
-//         }
-//         if(zeroC<=k){
-//             maxlen = max(maxlen,r-l+1);
-//             r++;
-//         }
-//     }
-//     return maxlen;
-// }
+    while(r<n){
+        if(arr[r] == 0){
+            zeroC++;
+        }
+        while(zeroC>k){
+            if(arr[l] == 0) zeroC--;
+            l++;
+        }
+        if(zeroC<=k){
+            maxlen = max(maxlen,r-l+1);
+            r++;
+        }
+    }
+    return maxlen;
+}
 
-// int main() {
-//     vector<int> arr = {1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0};
-//     int k = 2;
+int main() {
+    vector<int> arr = {1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0};
+    int k = 2;
     
-//     cout << "Longest subarray length: " << lengthLongestSubArrayWith1(arr, k) << endl;
-//     return 0;
-// }
+    cout << "Longest subarray length: " << lengthLongestSubArrayWith1(arr, k) << endl;
+    return 0;
+}
 
 
 // Till the better solution interviewer might be happy and somehwere we can even
