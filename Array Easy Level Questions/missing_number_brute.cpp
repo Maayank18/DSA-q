@@ -109,19 +109,15 @@ int main(){
 #include<iostream>
 using namespace std;
 
-int sum_of_arr( int arr[], int n){
-    int sum = 0;
-    for(int i = 0; i<n; i++){
-        sum = sum + arr[i];
-    }
-    return sum;
-}
-
 int missing_opt( int arr[], int n){
-    int value = sum_of_arr(arr,n);
     int sum_of_n = (n*(n+1))/2;
 
-    return sum_of_n - value;
+    int sum = 0;
+    for(int i = 0; i<n-1; i++){
+        sum = sum + arr[i];
+    }
+
+    return sum_of_n - sum;
 }
 
 int main(){
@@ -131,12 +127,12 @@ int main(){
 
     int arr[n];
 
-    for( int i = 0; i<n; i++){
+    for( int i = 0; i<n-1; i++){
         cin>>arr[i];
     }
 
     cout<<" The arrays entered by the user : ";
-    for( int i = 0; i<n; i++){
+    for( int i = 0; i<n-1; i++){
         cout<<arr[i]<<" ";
     }
     cout<<endl;
