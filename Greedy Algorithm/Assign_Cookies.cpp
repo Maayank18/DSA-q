@@ -3,21 +3,21 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int findContentChildren(vector<int> Greed, vector<int> CookieSize){
-    int n = Greed.size();
-    int m = CookieSize.size();
+int findContentChildren(vector<int> greed, vector<int> cookieSize){
+    int n = greed.size();
+    int m = cookieSize.size();
     int l = 0;
     int r = 0;
-    sort(Greed.begin(),Greed.end());
-    sort(CookieSize.begin(),CookieSize.end());
+    sort(greed.begin(),greed.end());
+    sort(cookieSize.begin(),cookieSize.end());
 
     while(l<n && r<m){
-        if(Greed[l]<=CookieSize[r]){
-            r++;
+        if(greed[l]<=cookieSize[r]){
+            l++;
         }
-        l++;
+        r++;
     }
-    return r;
+    return l;
 }
 
 int main() {
