@@ -12,7 +12,9 @@ int minPlatformRequired(vector<int> coming, vector<int> departure, int n) {
         for (int j = i + 1; j < n; j++) {
             // Check for overlapping intervals
             if ((coming[i] >= coming[j] && coming[i] <= departure[j]) ||
-                (coming[j] >= coming[i] && coming[j] <= departure[i])) {
+                (coming[j] >= coming[i] && coming[j] <= departure[i])) { 
+                    // go through if condition again
+                    
                 counter++;  // Overlapping train found
             }
         }
