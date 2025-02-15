@@ -4,26 +4,30 @@ using namespace std;
 
 int minCandies(vector<int>& ratings) {
     int n = ratings.size();
-    vector<int> candies(n, 1);  // Step 1: Every child gets at least 1 candy
+    int left[n];
+    int right[n];
+    left[0] = 1;
+     right[n-1] = 1;
 
-    // Step 2: Left to Right check
-    for (int i = 1; i < n; i++) {
-        if (ratings[i] > ratings[i - 1]) {
-            candies[i] = candies[i - 1] + 1;
+    for(int i = 1; i<n; i++){
+        if(ratings[i]>ratings[i-1]){
+            left[i] = left[i-1]+1;
+        }else{
+            left[i] = 1;
         }
     }
 
-    // Step 3: Right to Left check
-    for (int i = n - 2; i >= 0; i--) {
-        if (ratings[i] > ratings[i + 1]) {
-            candies[i] = max(candies[i], candies[i + 1] + 1);
+    for(int i = n-2; i>=0; i--){
+        if(ratings[i]>ratings[i+1]){
+            right[i] = right[i+1]+1;
+        }else{
+            right[i] = 1;
         }
     }
 
-    // Step 4: Compute the total candies
     int totalCandies = 0;
-    for (int c : candies) {
-        totalCandies += c;
+    for(int i = 0; i<n; i++){
+        totalCandies += max(left[i],right[i]);
     }
 
     return totalCandies;

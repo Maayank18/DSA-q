@@ -1,55 +1,51 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
+
 // A structure to represent a job 
-struct Job {
-   int id; // Job Id 
-   int dead; // Deadline of job 
-   int profit; // Profit if job is over before or on deadline 
+struct jobDetails {
+    int job_id;
+    int job_deadline;
+    int job_profit;
 };
-class Solution {
-   public:
-      bool static comparison(Job a, Job b) {
-         return (a.profit > b.profit);
-      }
-   //Function to find the maximum profit and the number of jobs done
-   pair < int, int > JobScheduling(Job arr[], int n) {
 
-      sort(arr, arr + n, comparison);
-      int maxi = arr[0].dead;
-      for (int i = 1; i < n; i++) {
-         maxi = max(maxi, arr[i].dead);
-      }
+// Comparison function to sort jobs in descending order of profit
+bool comp(jobDetails val1, jobDetails val2) {
+    return val1.job_profit > val2.job_profit;
+}
 
-      int slot[maxi + 1];
+// Function to compute maximum profit
+pair<int, int> maxProfitJob(jobDetails arr[], int n) {
+    sort(arr, arr + n, comp);  // Sort jobs by profit in descending order
+    
+    int maxDeadline = 0;
+    for (int i = 0; i < n; i++) {
+        maxDeadline = max(maxDeadline, arr[i].job_deadline);
+    }
 
-      for (int i = 0; i <= maxi; i++)
-         slot[i] = -1;
+    vector<int> hash(maxDeadline + 1, -1);  // Initialize all slots as empty (-1)
 
-      int countJobs = 0, jobProfit = 0;
+    int maxProfit = 0, count = 0;
 
-      for (int i = 0; i < n; i++) {
-         for (int j = arr[i].dead; j > 0; j--) {
-            if (slot[j] == -1) {
-               slot[j] = i;
-               countJobs++;
-               jobProfit += arr[i].profit;
-               break;
+    for (int i = 0; i < n; i++) {
+        for (int j = arr[i].job_deadline; j > 0; j--) {
+            if (hash[j] == -1) {  // If the slot is free
+                count++;
+                hash[j] = arr[i].job_id;
+                maxProfit += arr[i].job_profit;
+                break;  // Move to the next job
             }
-         }
-      }
+        }
+    }
+    return {count, maxProfit};
+}
 
-      return make_pair(countJobs, jobProfit);
-   }
-};
 int main() {
-   int n = 4;
-   Job arr[n] = {{1,4,20},{2,1,10},{3,2,40},{4,2,30}};
+    int n = 4;
+    jobDetails arr[n] = {{1, 4, 20}, {2, 1, 10}, {3, 2, 40}, {4, 2, 30}};
 
-   Solution ob;
-   //function call
-   pair < int, int > ans = ob.JobScheduling(arr, n);
-   cout << ans.first << " " << ans.second << endl;
+    // Function call
+    pair<int, int> ans = maxProfitJob(arr, n);
+    cout << ans.first << " " << ans.second << endl;
 
-   return 0;
-} 
+    return 0;
+}
