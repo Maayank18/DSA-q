@@ -1,3 +1,6 @@
+// one good thing here is it is somewhat a replica qustion for 
+//N MEETINGS IN A ROOM DO GIVE IT A WATCH FOR SURE 
+
 #include<iostream>
 #include<vector>
 #include<bits/stdc++.h>
