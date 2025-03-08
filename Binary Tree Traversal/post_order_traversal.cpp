@@ -1,4 +1,4 @@
-// in order is basically -> Left root right
+// in order is basically -> left righ root 
 
 #include<iostream>
 #include<vector>

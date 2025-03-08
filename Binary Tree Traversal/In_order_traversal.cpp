@@ -8,15 +8,15 @@ struct node{
     int data;
     node * left;
     node * right;
-    node( int value){
+    node( int value ){
         data = value;
         left = nullptr;
         right = nullptr;
     }
 };
 
-void inorder ( node * root, vector<int>&arr){
-    if(root == nullptr){
+void inorder(node * root, vector<int>&arr){
+    if(root == NULL){
         return;
     }
 
@@ -25,7 +25,7 @@ void inorder ( node * root, vector<int>&arr){
     inorder(root->right,arr);
 }
 
-vector<int> inOrderlist(node*root){
+vector<int> inOrderlist(node * root){
     vector<int> arr;
     inorder(root,arr);
     return arr;
