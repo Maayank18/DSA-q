@@ -1,149 +1,103 @@
 // BRUTE FORCE APPROACH                               
-#include <iostream>
-#include <algorithm>
+// #include <iostream>
+// #include <algorithm>
 
-using namespace std;
+// using namespace std;
 
-// Node structure for
-// the binary tree
-struct Node {
-    int data;
-    Node* left;
-    Node* right;
-    // Constructor to initialize
-    // the node with a value
-    Node(int val) : data(val), left(nullptr), right(nullptr) {}
-};
+// // Node structure for
+// // the binary tree
+// struct Node {
+//     int data;
+//     Node* left;
+//     Node* right;
+//     // Constructor to initialize
+//     // the node with a value
+//     Node(int val) : data(val), left(nullptr), right(nullptr) {}
+// };
 
-class Solution {
-public:
-    // Global variable to
-    // store the diameter
-    int diameter = 0;  
+// int height(Node * root){
+//     if( root == NULL) return 0;
+//     return 1+max(height(root->left), height(root->right));
+// }
 
-    // Function to calculate
-    // the height of a subtree
-    int calculateHeight(Node* node) {
-        if (node == nullptr) {
-            return 0;
-        }
+// int calculating_diamter(Node * root){
+//     if(root == NULL) return 0;
 
-        // Recursively calculate the
-        // height of left and right subtrees
-        int leftHeight = calculateHeight(node->left);
-        int rightHeight = calculateHeight(node->right);
+//     int leftheight = height(root->left);
+//     int rightheight = height(root->right);
 
-        // Calculate the diameter at the current
-        // node and update the global variable
-        diameter = max(diameter, leftHeight + rightHeight);
+//     int diameter = leftheight + rightheight;
 
-        // Return the height
-        // of the current subtree
-        return 1 + max(leftHeight, rightHeight);
-    }
+//     int leftdiamter = calculating_diamter(root->left);
+//     int rightdiameter = calculating_diamter(root->right);
 
-    // Function to find the
-    // diameter of a binary tree
-    int diameterOfBinaryTree(Node* root) {
-        // Start the recursive
-        // traversal from the root
-        calculateHeight(root);
+//     return max(diameter,max(leftdiamter,rightdiameter));
+// }
 
-        // Return the maximum diameter
-        // found during traversal
-        return diameter;
-    }
-};
+// // Main function
+// int main() {
+//     // Creating a sample binary tree
+//     Node* root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+//     root->left->left = new Node(4);
+//     root->left->right = new Node(5);
+//     root->left->right->right = new Node(6);
+//     root->left->right->right->right = new Node(7);
 
+//     // Creating an instance of the Solution class
 
+//     // Calculate the diameter of the binary tree
+//     int diameter = calculating_diamter(root);
 
-// Main function
-int main() {
-    // Creating a sample binary tree
-    Node* root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->left->right->right = new Node(6);
-    root->left->right->right->right = new Node(7);
+//     cout << "The diameter of the binary tree is: " << diameter << endl;
 
-    // Creating an instance of the Solution class
-    Solution solution;
-
-    // Calculate the diameter of the binary tree
-    int diameter = solution.diameterOfBinaryTree(root);
-
-    cout << "The diameter of the binary tree is: " << diameter << endl;
-
-    return 0;
-}
+//     return 0;
+// }
 
 
 // OPTIMAL APPROACH 
 
                                 
 #include <iostream>
-#include <algorithm>
-
+#include <algorithm>  // For max()
 using namespace std;
 
-// Node structure for the binary tree
+// Definition of a TreeNode
 struct Node {
-    int data;
+    int val;
     Node* left;
     Node* right;
-    // Constructor to initialize
-    // the node with a value
-    Node(int val) : data(val), left(nullptr), right(nullptr) {}
+
+    Node(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-class Solution {
-public:
-    // Function to find the
-    // diameter of a binary tree
-    int diameterOfBinaryTree(Node* root) {
-        // Initialize the variable to
-        // store the diameter of the tree
-        int diameter = 0;
-        // Call the height function to traverse
-        // the tree and calculate diameter
-        height(root, diameter);
-        // Return the calculated diameter
-        return diameter;
+// Function to calculate the height of the tree and update the diameter
+int height(Node* node, int &diameter) {
+    if (node == nullptr) {
+        return 0;
     }
 
-private:
-    // Function to calculate the height of
-    // the tree and update the diameter
-    int height(Node* node, int& diameter) {
-        // Base case: If the node is null,
-        // return 0 indicating the
-        // height of an empty tree
-        if (!node) {
-            return 0;
-        }
+    // Recursively compute the height of left and right subtrees
+    int lh = height(node->left, diameter);
+    int rh = height(node->right, diameter);
 
-        // Recursively calculate the
-        // height of left and right subtrees
-        int lh = height(node->left, diameter);
-        int rh = height(node->right, diameter);
+    // Update the diameter with the maximum of current diameter or sum of left and right heights
+    diameter = max(diameter, lh + rh);
 
-        // Update the diameter with the maximum
-        // of current diameter or sum of
-        // left and right heights
-        diameter = max(diameter, lh + rh);
+    // Return the height of the current node's subtree
+    return 1 + max(lh, rh);
+}
 
-        // Return the height of
-        // the current node's subtree
-        return 1 + max(lh, rh);
-    }
-};
+// Function to compute the diameter of the binary tree
+int diameterOfBinaryTree(Node* root) {
+    int diameter = 0;
+    height(root, diameter); // Call height function to update diameter
+    return diameter;
+}
 
-
-// Main function
+// Driver Code
 int main() {
-    // Creating a sample binary tree
     Node* root = new Node(1);
     root->left = new Node(2);
     root->right = new Node(3);
@@ -152,16 +106,11 @@ int main() {
     root->left->right->right = new Node(6);
     root->left->right->right->right = new Node(7);
 
-    // Creating an instance of the Solution class
-    Solution solution;
-
-    // Calculate the diameter of the binary tree
-    int diameter = solution.diameterOfBinaryTree(root);
-
-    cout << "The diameter of the binary tree is: " << diameter << endl;
+    cout << "Diameter of the tree: " << diameterOfBinaryTree(root) << endl;
 
     return 0;
 }
+
                                 
                             
                                 
