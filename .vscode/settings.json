@@ -65,7 +65,8 @@
     "memory": "cpp",
     "system_error": "cpp",
     "thread": "cpp",
-    "typeindex": "cpp"
+    "typeindex": "cpp",
+    "string": "cpp"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }
