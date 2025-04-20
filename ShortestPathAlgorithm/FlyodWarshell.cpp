@@ -92,3 +92,95 @@ int main() {
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+// directed 
+
+/*
+Problem Statement (Directed Graph):
+------------------------------------
+You are given a directed graph with `n` cities and `edges`, where each edge is 
+represented by [u, v, w] meaning there is a directed edge from city u to city v 
+with distance w.
+
+Your goal is to find the city that has the **smallest number of reachable cities** 
+within a given `distanceThreshold`. In case of a tie, return the city with the 
+**greatest index**.
+
+Input:
+- n (int): Number of cities
+- m (int): Number of directed edges
+- edges (vector<vector<int>>): List of edges [from, to, weight]
+- distanceThreshold (int): Max allowed distance to consider a city reachable
+
+Output:
+- An integer representing the city with the smallest number of reachable cities 
+  within the given threshold (breaking ties by choosing the larger index).
+
+Approach:
+- Use Floyd-Warshall algorithm for All-Pairs Shortest Paths.
+- Count how many cities are reachable from each city within the threshold.
+- Track the city with the minimum count and maximum index.
+
+Time Complexity: O(n^3)
+Space Complexity: O(n^2)
+*/
+
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int findCityDirected(int n, int m, vector<vector<int>> &edges, int distanceThreshold) {
+    // Step 1: Initialize distance matrix with INT_MAX
+    vector<vector<int>> distance(n, vector<int>(n, INT_MAX));
+
+    // Step 2: For directed graph, only one direction is updated
+    for (auto &edge : edges) {
+        int u = edge[0], v = edge[1], wt = edge[2];
+        distance[u][v] = wt;
+    }
+
+    // Step 3: Distance from a node to itself is 0
+    for (int i = 0; i < n; ++i) {
+        distance[i][i] = 0;
+    }
+
+    // Step 4: Floyd-Warshall algorithm
+    for (int k = 0; k < n; ++k) {
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (distance[i][k] != INT_MAX && distance[k][j] != INT_MAX)
+                    distance[i][j] = min(distance[i][j], distance[i][k] + distance[k][j]);
+            }
+        }
+    }
+
+    // Step 5: Find city with minimum reachable cities within the threshold
+    int minReachable = n;
+    int cityNumber = -1;
+
+    for (int city = 0; city < n; ++city) {
+        int count = 0;
+        for (int otherCity = 0; otherCity < n; ++otherCity) {
+            if (distance[city][otherCity] <= distanceThreshold)
+                count++;
+        }
+
+        // Prefer city with higher index in case of tie
+        if (count <= minReachable) {
+            minReachable = count;
+            cityNumber = city;
+        }
+    }
+
+    return cityNumber;
+}
+
