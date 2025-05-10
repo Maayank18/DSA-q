@@ -127,11 +127,11 @@ int LCS(string s1, int n, string s2, int m, vector<vector<int>> &dp ){
 
     for(int i = 1; i<=n; i++){
         for(int j = 1; j<=m; j++){
-            if(s1[n] == s2[m]){
-                return dp[n][m] =  1 + LCS(s1,n-1,s2,m-1,dp);
+            if(s1[i] == s2[j]){
+                return dp[i][j] =  1 + dp[n-1][m-1];
             }
             // in case the character doesnt match
-             dp[n][m] = max(LCS(s1,n-1,s2,m,dp),LCS(s1,n,s2,m-1,dp));
+             else dp[n][m] = max(dp[n-1][m],dp[n][m-1]);
         }
     }
     return dp[n][m];
