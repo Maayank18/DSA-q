@@ -9,30 +9,30 @@
 // WAY 1 OF DOING IT IS RECUSION
 //  TC -> O(2^N) = due to take not take cases we have
 //  SC -> O(N) = Auxillary Stack Space
-// #include<iostream>
-// #include<vector>
-// using namespace std;
+#include<iostream>
+#include<vector>
+using namespace std;
 
-// int f(int i,int n, vector<int> &stocks, int buy){
-//     int maxP = 0;
+int f(int i,int n, vector<int> &stocks, int buy){
+    int maxP = 0;
 
-//     // base case
-//     // what if i == n and we still hold a stock will will nullify it
-//     if(i == n) return 0;
+    // base case
+    // what if i == n and we still hold a stock will will nullify it
+    if(i == n) return 0;
 
-//     if(buy){ // if we can buys we will have two choices to make whteher to take ornot take
-//         int buysIT = -stocks[i] + f(i+1,n,stocks,0);
-//         int notBUYit = 0 + f(i+1,n,stocks,1);
-//         maxP = max(maxP,max(buysIT,notBUYit));
+    if(buy){ // if we can buys we will have two choices to make whteher to take ornot take
+        int buysIT = -stocks[i] + f(i+1,n,stocks,0);
+        int notBUYit = 0 + f(i+1,n,stocks,1);
+        maxP = max(maxP,max(buysIT,notBUYit));
 
-//     }else{ // if we cant buy we have liberty to sell and here also we may or may not sell
-//         int sellIT = stocks[i] + f(i+1,n,stocks,1);
-//         int notSELLit = f(i+1,n,stocks,0);
-//         maxP = max(maxP,max(sellIT,notSELLit));
-//     }
+    }else{ // if we cant buy we have liberty to sell and here also we may or may not sell
+        int sellIT = stocks[i] + f(i+1,n,stocks,1);
+        int notSELLit = f(i+1,n,stocks,0);
+        maxP = max(maxP,max(sellIT,notSELLit));
+    }
 
-//     return maxP;
-// }
+    return maxP;
+}
 
 // int main(){
 //     int n = 6;
