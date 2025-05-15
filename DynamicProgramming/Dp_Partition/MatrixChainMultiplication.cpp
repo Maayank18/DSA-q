@@ -24,27 +24,27 @@
 #include<vector>
 using namespace std;
 
-// int f(int i, int j, vector<int>&arr){
+int f(int i, int j, vector<int>&arr){
 
-//     // base case
-//     if(i == j) return 0;
+    // base case
+    if(i == j) return 0;
 
 
-//     int mini = 1e9;
-//     for(int k = i; k<j; k++){
-//         int steps = (arr[i-1]*arr[k]*arr[j]) + f(i,k,arr) + f(k+1,j,arr);
-//         mini = min(mini,steps);
-//     }
-//     return mini;
-// }
+    int mini = 1e9;
+    for(int k = i; k<j; k++){
+        int steps = (arr[i-1]*arr[k]*arr[j]) + f(i,k,arr) + f(k+1,j,arr);
+        mini = min(mini,steps);
+    }
+    return mini;
+}
 
-// int main(){
-//     int n = 5; // means 4 arrays as 4 sizes are given
-//     vector<int> arr = {10,20,30,40,50};
-//     int minOperation = f(1,n-1,arr); // passing my i and j;
-//     cout<<" minimum multiplacation operations are : "<<minOperation<<endl;
-//     return 0;
-// }
+int main(){
+    int n = 5; // means 4 arrays as 4 sizes are given
+    vector<int> arr = {10,20,30,40,50};
+    int minOperation = f(1,n-1,arr); // passing my i and j;
+    cout<<" minimum multiplacation operations are : "<<minOperation<<endl;
+    return 0;
+}
 
 
 
@@ -52,21 +52,21 @@ using namespace std;
 // Memoisation technique 
 // TC -> O(n x n) x n(almost cube solution)
 // SC -> O(n^2) + O(n)
-// int f(int i, int j, vector<int>&arr, vector<vector<int>> &dp){
+int f(int i, int j, vector<int>&arr, vector<vector<int>> &dp){
 
-//     // base case
-//     if(i == j) return 0;
+    // base case
+    if(i == j) return 0;
 
-//     // base case 2 
-//     if(dp[i][j] != -1) return dp[i][j];
+    // base case 2 
+    if(dp[i][j] != -1) return dp[i][j];
 
-//     int mini = 1e9;
-//     for(int k = i; k<j; k++){
-//         int steps = (arr[i-1]*arr[k]*arr[j]) + f(i,k,arr,dp) + f(k+1,j,arr,dp);
-//         mini = min(mini,steps);
-//     }
-//     return dp[i][j] = mini;
-// }
+    int mini = 1e9;
+    for(int k = i; k<j; k++){
+        int steps = (arr[i-1]*arr[k]*arr[j]) + f(i,k,arr,dp) + f(k+1,j,arr,dp);
+        mini = min(mini,steps);
+    }
+    return dp[i][j] = mini;
+}
 
 // int main(){
 //     int n = 5; // means 4 arrays as 4 sizes are given
