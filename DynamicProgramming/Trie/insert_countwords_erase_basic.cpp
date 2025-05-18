@@ -24,7 +24,7 @@ struct Node{
         return links[ch-'a'];
     }
 
-    void increaseEnd(){
+    void increaseEndWith(){
         cntendWith++;
     }
 
@@ -68,7 +68,7 @@ class Trie{
             node = node->get(word[i]);
             node->increasePrefix();
         }
-        node->increaseEnd();
+        node->increaseEndWith();
     }
 
     int countWordsEqualTo( string word){
@@ -110,3 +110,38 @@ class Trie{
         node->deleteEnd();    
     }
 };
+
+
+int main() {
+    Trie trie;
+
+    // Inserting words
+    trie.insert("apple");
+    trie.insert("apple");
+    trie.insert("app");
+    trie.insert("ape");
+
+    // Counting words equal to
+    cout << "Count of word 'apple': " << trie.countWordsEqualTo("apple") << endl; // 2
+    cout << "Count of word 'app': " << trie.countWordsEqualTo("app") << endl;     // 1
+
+    // Counting words starting with prefix
+    cout << "Count of words starting with 'ap': " << trie.countWordsStartingWth("ap") << endl; // 4
+    cout << "Count of words starting with 'app': " << trie.countWordsStartingWth("app") << endl; // 3
+
+    // Erasing a word
+    trie.Erase("apple");
+    cout << "Count of word 'apple' after one erase: " << trie.countWordsEqualTo("apple") << endl; // 1
+    cout << "Count of words starting with 'app' after erase: " << trie.countWordsStartingWth("app") << endl; // 2
+
+    trie.Erase("apple");
+    cout << "Count of word 'apple' after second erase: " << trie.countWordsEqualTo("apple") << endl; // 0
+
+    trie.Erase("app");
+    cout << "Count of word 'app' after erase: " << trie.countWordsEqualTo("app") << endl; // 0
+
+    // Erasing a non-existent word (no effect)
+    trie.Erase("banana");
+
+    return 0;
+}

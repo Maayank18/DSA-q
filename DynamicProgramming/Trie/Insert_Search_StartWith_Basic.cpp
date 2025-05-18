@@ -10,6 +10,8 @@ using namespace std;
 struct Node{
     Node * links[26] = {NULL};
     bool flag = false;
+
+    // does my node contains this letter ?
     bool containskey( char ch ){
         return (links[ch-'a'] != NULL);
     }
@@ -55,7 +57,7 @@ class Trie{
           node = node->get(word[i]);
        }
        // reached the end reference
-       node->setEnd();
+       node->setEnd();  
     }
 
     //  TC -> O(length of word)
@@ -67,6 +69,9 @@ class Trie{
             }
             node = node->get(word[i]);
         }
+
+        // if end refernce is true hence the word searched succesful
+       // otherwise the searched word NOT THERE
         return node->isEnd();
     }
 
