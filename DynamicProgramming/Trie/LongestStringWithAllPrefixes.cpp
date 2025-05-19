@@ -90,7 +90,7 @@ string LongestWord(int n, vector<string> &word){
     string longestString = "";
 
     for(auto it : word){
-        if(node->checkIfPrefixExist(it)){
+        if(trie.checkIfPrefixExist(it)){
             if(it.length() > longestString.length()){
                 longestString = it;
             }else if (it.length() == longestString.length() ||
@@ -103,4 +103,13 @@ string LongestWord(int n, vector<string> &word){
 
     if( longestString == "") return NULL;
     return longestString;
+}
+
+int main() {
+    vector<string> words = {"a", "app", "ap", "appl", "apple", "apply"};
+    int n = words.size();
+
+    cout << "Longest Word with all prefixes present: " << LongestWord(n, words) << endl;
+
+    return 0;
 }
