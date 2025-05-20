@@ -7,41 +7,41 @@
 
 // best is to use a recusrion tree to understand
 // WAY 1 IS RECURSION
-// #include<iostream>
-// #include<string>
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
 
-// int f(string s1, int n, string s2, int m, int count) {
-//     // Base case: if any index goes out of bounds, return 0
-//     if (n < 0 || m < 0) {
-//         return count;
-//     }
+int f(string s1, int n, string s2, int m, int count) {
+    // Base case: if any index goes out of bounds, return 0
+    if (n < 0 || m < 0) {
+        return count;
+    }
     
-//     int currentCount = count;
+    int currentCount = count;
 
-//     // Case when the indexed characters match
-//     if (s1[n] == s2[m]) {
-//         currentCount = f(s1, n - 1, s2, m - 1, count + 1); // Increment count
-//     }
+    // Case when the indexed characters match
+    if (s1[n] == s2[m]) {
+        currentCount = f(s1, n - 1, s2, m - 1, count + 1); // Increment count
+    }
 
-//     // If current characters don't match, explore new paths and reset count to 0
-//     int skipS1 = f(s1, n - 1, s2, m, 0);
-//     int skipS2 = f(s1, n, s2, m - 1, 0);
+    // If current characters don't match, explore new paths and reset count to 0
+    int skipS1 = f(s1, n - 1, s2, m, 0);
+    int skipS2 = f(s1, n, s2, m - 1, 0);
 
-//     return max({currentCount, skipS1, skipS2});
-// }
+    return max({currentCount, skipS1, skipS2});
+}
 
-// int main() {
-//     string s1 = "abcjklp";
-//     string s2 = "acjkp";
-//     int n = s1.size() - 1; // length of s1 - 1 (for 0-based indexing)
-//     int m = s2.size() - 1; // length of s2 - 1 (for 0-based indexing)
-//     int count = 0;
-//     int LengthOfSubstring = f(s1, n, s2, m, count);
-//     cout << "The length of the Longest Common Substring is: " << LengthOfSubstring << endl;
-//     return 0;
-// }
+int main() {
+    string s1 = "abcjklp";
+    string s2 = "acjkp";
+    int n = s1.size() - 1; // length of s1 - 1 (for 0-based indexing)
+    int m = s2.size() - 1; // length of s2 - 1 (for 0-based indexing)
+    int count = 0;
+    int LengthOfSubstring = f(s1, n, s2, m, count);
+    cout << "The length of the Longest Common Substring is: " << LengthOfSubstring << endl;
+    return 0;
+}
 
 
 

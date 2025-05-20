@@ -8,30 +8,30 @@ using namespace std;
 
 // alawys start checking for basecase from the parameters given in the fucntion
 
-// bool isTarget(int n, vector<int> &arr, int target){
+bool isTarget(int n, vector<int> &arr, int target){
 
-//     // base case 1 -> if my target == 0 hence it exist 
-//     if(target == 0) return true;
+    // base case 1 -> if my target == 0 hence it exist 
+    if(target == 0) return true;
 
-//     // base case 2 -> if we are done checking and only one element is left
-//     // then that has to be equal to our target
-//     if(n == 0) return (arr[0] == target);
+    // base case 2 -> if we are done checking and only one element is left
+    // then that has to be equal to our target
+    if(n == 0) return (arr[0] == target);
 
 
-//     // now we will do our stuff
-//     bool notTake = isTarget(n-1,arr,target);
-//     bool Take = isTarget(n-1,arr,target-arr[n]);
+    // now we will do our stuff
+    bool notTake = isTarget(n-1,arr,target);
+    bool Take = isTarget(n-1,arr,target-arr[n]);
 
-//     return notTake || Take;
-// }
+    return notTake || Take;
+}
 
-// int main(){
-//     int n = 4; // size of array
-//     vector<int> arr = {1,2,3,4};
-//     int target = 4;
-//     bool ans = isTarget(n-1,arr,target);
-//     return 0;
-// }
+int main(){
+    int n = 4; // size of array
+    vector<int> arr = {1,2,3,4};
+    int target = 4;
+    bool ans = isTarget(n-1,arr,target);
+    return 0;
+}
 
 
 
