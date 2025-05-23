@@ -6,53 +6,53 @@
 // BRUTE FORCE APPROACH 
 // tc -> O(N+M)
 // sc -> O(N+M)
-// #include<iostream>
-// #include<vector>
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<iostream>
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
 
-// vector<int> f(vector<int> &arr1, vector<int> &arr2){
-//     int n = arr1.size();
-//     int m = arr2.size();
-//     int i = 0; 
-//     int j = 0;
-//     vector<int> ans;
+vector<int> f(vector<int> &arr1, vector<int> &arr2){
+    int n = arr1.size();
+    int m = arr2.size();
+    int i = 0; 
+    int j = 0;
+    vector<int> ans;
 
-//     while(i<n && j<m){
+    while(i<n && j<m){
 
-//         if(arr1[i] <= arr2[j]){
-//             ans.push_back(arr1[i]);
-//             i++;
-//         }else{
-//             ans.push_back(arr2[j]);
-//             j++;
-//         }
-//     }
+        if(arr1[i] <= arr2[j]){
+            ans.push_back(arr1[i]);
+            i++;
+        }else{
+            ans.push_back(arr2[j]);
+            j++;
+        }
+    }
 
-//     while(i<n){
-//         ans.push_back(arr1[i]);
-//         i++;
-//     }
+    while(i<n){
+        ans.push_back(arr1[i]);
+        i++;
+    }
 
-//     while(j<m){
-//         ans.push_back(arr2[j]);
-//         j++;
-//     }
+    while(j<m){
+        ans.push_back(arr2[j]);
+        j++;
+    }
 
-//     return ans;
-// }
+    return ans;
+}
 
-// int main(){
-//     // and in case these are not sorted sort using the sort function  
-//     vector<int> arr1  ={1,3,5,7};
-//     vector<int> arr2 = {0,2,4,6};
-//     vector<int> result = f(arr1,arr2);
+int main(){
+    // and in case these are not sorted sort using the sort function  
+    vector<int> arr1  ={1,3,5,7};
+    vector<int> arr2 = {0,2,4,6};
+    vector<int> result = f(arr1,arr2);
 
-//     for(auto it : result){
-//         cout<<it<<" ";
-//     }
-//     return 0;
-// }
+    for(auto it : result){
+        cout<<it<<" ";
+    }
+    return 0;
+}
 
 
 
