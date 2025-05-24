@@ -1,6 +1,6 @@
 // lower bound is that case in which we find the minimum index such that 
 // arr[index] >= x  , where x is a given number or we can say target element
-// always remember its not necessary we get answer in one we may ahve to traverse
+// always remember its not necessary we get answer in one we may have to traverse
 // right and left
 
 // time complexity is somewhat about O(log base 2 (n))
