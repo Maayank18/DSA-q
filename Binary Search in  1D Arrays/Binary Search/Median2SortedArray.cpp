@@ -7,50 +7,50 @@
 
 // BRUTE FORCE APPROACH 
 
-// #include <iostream>
-// #include <vector>
-// #include <algorithm>  // Don't use bits/stdc++.h in production code
-// using namespace std;
+#include <iostream>
+#include <vector>
+#include <algorithm>  // Don't use bits/stdc++.h in production code
+using namespace std;
 
-// double f2(vector<int> &result) {
-//     int n = result.size();
-//     if (n % 2 == 1) {
-//         return result[n / 2];
-//     } else {
-//         return (result[n / 2 - 1] + result[n / 2]) / 2.0;
-//     }
-// }
+double f2(vector<int> &result) {
+    int n = result.size();
+    if (n % 2 == 1) {
+        return result[n / 2];
+    } else {
+        return (result[n / 2 - 1] + result[n / 2]) / 2.0;
+    }
+}
 
-// vector<int> f(vector<int> &arr1, vector<int> &arr2) {
-//     int n = arr1.size(), m = arr2.size();
-//     int i = 0, j = 0;
-//     vector<int> ans;
+vector<int> f(vector<int> &arr1, vector<int> &arr2) {
+    int n = arr1.size(), m = arr2.size();
+    int i = 0, j = 0;
+    vector<int> ans;
 
-//     while (i < n && j < m) {
-//         if (arr1[i] <= arr2[j]) {
-//             ans.push_back(arr1[i++]);
-//         } else {
-//             ans.push_back(arr2[j++]);
-//         }
-//     }
+    while (i < n && j < m) {
+        if (arr1[i] <= arr2[j]) {
+            ans.push_back(arr1[i++]);
+        } else {
+            ans.push_back(arr2[j++]);
+        }
+    }
 
-//     while (i < n) ans.push_back(arr1[i++]);
-//     while (j < m) ans.push_back(arr2[j++]);
+    while (i < n) ans.push_back(arr1[i++]);
+    while (j < m) ans.push_back(arr2[j++]);
 
-//     return ans;
-// }
+    return ans;
+}
 
-// int main() {
-//     vector<int> arr1 = {1, 3, 5, 7};
-//     vector<int> arr2 = {0, 2, 4, 6};
+int main() {
+    vector<int> arr1 = {1, 3, 5, 7};
+    vector<int> arr2 = {0, 2, 4, 6};
 
-//     vector<int> result = f(arr1, arr2);
-//     double median = f2(result);
+    vector<int> result = f(arr1, arr2);
+    double median = f2(result);
 
-//     cout << "The median of the sorted array is: " << median << endl;
+    cout << "The median of the sorted array is: " << median << endl;
 
-//     return 0;
-// }
+    return 0;
+}
 
 
 

@@ -5,88 +5,88 @@
 
 
 // BRUTE FORCE 
-// #include<iostream>
-// #include<vector>
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<iostream>
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
 
-// bool f(vector<vector<int>> &mat, int target){
-//     int n = mat.size();
-//     int m = mat[0].size();
+bool f(vector<vector<int>> &mat, int target){
+    int n = mat.size();
+    int m = mat[0].size();
 
-//     bool flag = false;
+    bool flag = false;
 
-//     for(int i = 0; i<n; i++){
-//         for(int j = 0; j<m; j++){
-//             if(mat[i][j] == target ){
-//                 flag = true;
-//             }
-//         }
-//     }
-//     return flag;
-// }
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<m; j++){
+            if(mat[i][j] == target ){
+                flag = true;
+            }
+        }
+    }
+    return flag;
+}
 
-// int main(){
-//     vector<vector<int>> mat = {{3,4,7,9},{12,13,16,18},{20,21,23,29}};
-//     int target = 23;
-//     bool doesExist = f(mat,target);
-//     cout<<" does the target exist in matrix : "<< doesExist<<endl;
-//     return 0;
-// }
+int main(){
+    vector<vector<int>> mat = {{3,4,7,9},{12,13,16,18},{20,21,23,29}};
+    int target = 23;
+    bool doesExist = f(mat,target);
+    cout<<" does the target exist in matrix : "<< doesExist<<endl;
+    return 0;
+}
 
 
 
 
 // OPTIMAL APPROACH - binary search as elements are in sorted order
 // TC -> O( N X log base 2 m)
-// #include<iostream>
-// #include<vector>
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<iostream>
+#include<vector>
+#include<bits/stdc++.h>
+using namespace std;
 
-// bool findTarget(vector<int> &mat, int m, int target){
+bool findTarget(vector<int> &mat, int m, int target){
 
-//     int low = 0; int high = m-1;
+    int low = 0; int high = m-1;
     
-//     while(low<=high){
-//         int mid = low  + (high - low)/2;
+    while(low<=high){
+        int mid = low  + (high - low)/2;
 
-//         if(mat[mid] == target){
-//             return true;
-//         }else if(mat[mid] > target ){
-//             high = mid -1;
-//         }else{
-//             low = mid + 1;
-//         }
-//     }
-//     return false;
-// }
+        if(mat[mid] == target){
+            return true;
+        }else if(mat[mid] > target ){
+            high = mid -1;
+        }else{
+            low = mid + 1;
+        }
+    }
+    return false;
+}
 
-// bool f(vector<vector<int>> &mat, int target){
-//     int n = mat.size();
-//     int m = mat[0].size();
+bool f(vector<vector<int>> &mat, int target){
+    int n = mat.size();
+    int m = mat[0].size();
 
-//     // bool flag = false; could also be used 
+    // bool flag = false; could also be used 
 
-//     for(int i = 0; i<n; i++){
+    for(int i = 0; i<n; i++){
 
-//         // base case that in a row 1 element shoudl be less tha equal to target
-//         // and last elment should be greater tha equal to the target
+        // base case that in a row 1 element shoudl be less tha equal to target
+        // and last elment should be greater tha equal to the target
 
-//         if(mat[i][0] <= target && target <= mat[i][m-1]){
-//             return findTarget(mat[i],m,target);
-//         }
-//     }
-//     return false;;
-// }
+        if(mat[i][0] <= target && target <= mat[i][m-1]){
+            return findTarget(mat[i],m,target);
+        }
+    }
+    return false;;
+}
 
-// int main(){
-//     vector<vector<int>> mat = {{3,4,7,9},{12,13,16,18},{20,21,23,29}};
-//     int target = 23;
-//     bool doesExist = f(mat,target);
-//     cout<<" does the target exist in matrix : "<< doesExist<<endl;
-//     return 0;
-// }
+int main(){
+    vector<vector<int>> mat = {{3,4,7,9},{12,13,16,18},{20,21,23,29}};
+    int target = 23;
+    bool doesExist = f(mat,target);
+    cout<<" does the target exist in matrix : "<< doesExist<<endl;
+    return 0;
+}
 
 
 
