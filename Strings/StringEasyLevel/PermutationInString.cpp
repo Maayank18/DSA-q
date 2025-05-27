@@ -34,7 +34,7 @@ bool check(string s1, string s2){
     int windowLen = s1.length();
     int i = 0;
 
-    while( i < windowLen){
+    while( i < windowLen && i < s2.length()){
         int index = s2[i] - 'a';
         count2[index]++;
         i++;
