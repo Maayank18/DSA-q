@@ -50,7 +50,8 @@ int main(){
 
 
 // BETTER SOLUTION
-
+// TC -> O(N)
+// SC -> O(1)
 #include<iostream>
 #include<string>
 #include<bits/stdc++.h>
@@ -93,4 +94,37 @@ int main(){
     bool isIsomorphic = check(s1,s2);
     cout<<" are string isomorphic : "<<isIsomorphic<<endl;
     return 0;
+}
+
+
+
+// BRUTE FORCE -> IT WILL BE SAME TC AND SC AS BETTER JUST A LITTLE DIFFERENCE CONECPT
+// IT WILL USED ECODING OF THE DIDGITS 
+// "egg" → [0, 1, 1]   (e first seen at 0, g first at 1, g again at 1)
+// "add" → [0, 1, 1]   (a → 0, d → 1, d → 1)
+// → Patterns match → Isomorphic
+
+// JUST FOR UNDERSTANDING PURPOSE 
+
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int> encodePattern(string str) {
+    unordered_map<char, int> charIndex;
+    vector<int> pattern;
+
+    for (int i = 0; i < str.length(); i++) {
+        if (charIndex.find(str[i]) == charIndex.end()) {
+            charIndex[str[i]] = i;  // first time this char is seen
+        }
+        pattern.push_back(charIndex[str[i]]);
+    }
+
+    return pattern;
+}
+
+bool isIsomorphic(string s, string t) {
+    return encodePattern(s) == encodePattern(t);
 }
