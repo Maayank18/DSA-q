@@ -24,3 +24,15 @@ int main(){
 
     return 0;
 }
+
+
+// or we can do this also
+
+// int height  =  0;
+
+// while(n > 1){
+//     height++;
+//     n = n / 2;
+// }
+
+// return height;
