@@ -98,6 +98,7 @@ bool maxHeap(node * root){
             return false;
         }else{
             return maxHeap(root->right);
+        }
     }
 
     return true;
@@ -135,7 +136,7 @@ int main() {
     root->left->right = new node(12);
     root->right->left = new node(2);
 
-    if (isHeap(root)) {
+    if (isMaxHeap(root)) {
         cout << "The binary tree is a Max Heap." << endl;
     } else {
         cout << "The binary tree is NOT a Max Heap." << endl;
