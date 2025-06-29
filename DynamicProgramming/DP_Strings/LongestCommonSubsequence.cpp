@@ -16,36 +16,36 @@
 // This is the way one of doing it the recussion approach 
 // TC -> O(2^n) * O(2^m)
 // SC -> recursion stack space O(n)
-// #include<iostream>
-// #include<string>
-// using namespace std;
+#include<iostream>
+#include<string>
+using namespace std;
 
-// int LCS(string s1, int n, string s2, int m ){
+int LCS(string s1, int n, string s2, int m ){
     
-//     // base case where we exit
-//     if( n<0 || m<0){
-//         return 0;
-//     }
+    // base case where we exit
+    if( n<0 || m<0){
+        return 0;
+    }
 
 
-//     // this is the case where the character matches
-//     if(s1[n] == s2[m]){
-//         return 1 + LCS(s1,n-1,s2,m-1);
-//     }
+    // this is the case where the character matches
+    if(s1[n] == s2[m]){
+        return 1 + LCS(s1,n-1,s2,m-1);
+    }
 
-//     // in case the character doesnt match
-//     return max(LCS(s1,n-1,s2,m),LCS(s1,n,s2,m-1));
-// }
+    // in case the character doesnt match
+    return max(LCS(s1,n-1,s2,m),LCS(s1,n,s2,m-1));
+}
 
-// int main(){
-//     string s1 = "acd";
-//     string s2 = "ced";
-//     int n = s1.size(); // size of s1
-//     int m = s2.size(); // size of s2
-//     int maxLengthSubsequence = LCS(s1,n-1,s2,m-1);
-//     cout<<" the max length of common subsequnece is :"<<maxLengthSubsequence<<endl;
-//     return 0;
-// }
+int main(){
+    string s1 = "acd";
+    string s2 = "ced";
+    int n = s1.size(); // size of s1
+    int m = s2.size(); // size of s2
+    int maxLengthSubsequence = LCS(s1,n-1,s2,m-1);
+    cout<<" the max length of common subsequnece is :"<<maxLengthSubsequence<<endl;
+    return 0;
+}
 
 
 

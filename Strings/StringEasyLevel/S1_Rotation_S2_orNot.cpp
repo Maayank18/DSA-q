@@ -5,37 +5,37 @@
 // BRUTE FROCE APPROACH 
 //  TC -> O(N)
 //  SC -> O(N)
-// #include<iostream>
-// #include<string>
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
 
-// bool check(string &s1, string &s2){
+bool check(string &s1, string &s2){
 
-//     int n = s1.length();
-//     if(s1.length() != s2.length()) return false;
+    int n = s1.length();
+    if(s1.length() != s2.length()) return false;
 
-//     string temp;
+    string temp;
 
-//     for(int i = 1; i<n; i++){
-//         temp += s1[i];
-//     }
+    for(int i = 1; i<n; i++){
+        temp += s1[i];
+    }
 
-//     temp += s1[0];
+    temp += s1[0];
 
-//     return (temp == s2);
+    return (temp == s2);
 
-// }
+}
 
-// int main(){
-//     string s1 = "abcd";
-//     string s2 = "bcda";
+int main(){
+    string s1 = "abcd";
+    string s2 = "bcda";
 
-//     bool isRotation = check(s1,s2);
+    bool isRotation = check(s1,s2);
 
-//     cout<<" is s2 the rotataion of s1 "<<isRotation<<endl;
-//     return 0;
-// }
+    cout<<" is s2 the rotataion of s1 "<<isRotation<<endl;
+    return 0;
+}
 
 
 

@@ -22,11 +22,11 @@ bool isPalindromeBrute(string s) {
         }
     }
 
-    // Step 2: Create reversed copy
+    // Create reversed copy
     string reversed = cleaned;
     reverse(reversed.begin(), reversed.end());
 
-    // Step 3: Compare cleaned string with reversed copy
+    //Compare cleaned string with reversed copy
     return cleaned == reversed;
 }
 

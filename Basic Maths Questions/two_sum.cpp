@@ -67,11 +67,13 @@ int main(){
 // for sorted arrays and space complexity will be O(1)
 
 #include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-pair<int,int> find(int arr[], int n, int target){
+pair<int,int> find(int &arr[], int n, int target){
     int left = 0;
     int right = n-1;
+    sort(arr.begin(),arr.end())
     while(left<right){
         if(arr[left]+arr[right]<target){
             left++;

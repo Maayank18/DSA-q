@@ -5,33 +5,33 @@ using namespace std;
 
 // GREEDY ALGORITHM
 
-// int f( vector<int> &greed, vector<int> &cookieSize){
-//     int n = greed.size();
-//     int m = cookieSize.size();
-//     int l = 0;
-//     int r = 0;
-//     sort(greed.begin(),greed.end());
-//     sort(cookieSize.begin(),cookieSize.end());
-//     while(l<n && r<m){
+int f( vector<int> &greed, vector<int> &cookieSize){
+    int n = greed.size();
+    int m = cookieSize.size();
+    int l = 0;
+    int r = 0;
+    sort(greed.begin(),greed.end());
+    sort(cookieSize.begin(),cookieSize.end());
+    while(l<n && r<m){
         
-//         if(greed[l] <= cookieSize[r]){
-//             l++;
-//         }
+        if(greed[l] <= cookieSize[r]){
+            l++;
+        }
 
-//         r++;
-//     }
+        r++;
+    }
 
-//     return l;
-// }
+    return l;
+}
 
-// int main(){
-//     vector<int> greed = {1,5,3,3,4};
-//     vector<int> cookieSize = {4,2,1,2,1,3};
+int main(){
+    vector<int> greed = {1,5,3,3,4};
+    vector<int> cookieSize = {4,2,1,2,1,3};
 
-//     int satisfiedChildren = f(greed,cookieSize);
-//     cout<<" maximum satisfied are  :"<<satisfiedChildren<<endl;
-//     return 0;
-// }
+    int satisfiedChildren = f(greed,cookieSize);
+    cout<<" maximum satisfied are  :"<<satisfiedChildren<<endl;
+    return 0;
+}
 
 
 

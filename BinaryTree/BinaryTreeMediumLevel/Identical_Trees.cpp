@@ -1,6 +1,7 @@
 // In order to check whether the given 2 trees are identical or not 
 // we simply find any preorder , inorder or post order traversal of both trees 
 // and if they match they equal/ identical else not 
+// basically to check if trees are same or not
 
                             
 #include <iostream>
@@ -21,8 +22,6 @@ struct Node {
 
 class Solution {
 public:
-    // Function to check if two
-    // binary trees are identical
     bool isIdentical(Node* node1, Node* node2){
         // If both nodes are NULL,
         // they are identical

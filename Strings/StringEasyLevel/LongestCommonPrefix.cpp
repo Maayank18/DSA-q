@@ -16,6 +16,7 @@ string check(vector<string> &str){
     if(str.empty()) return "";
 
     for(int i = 0; i<str[0].size(); i++){
+        // str[0].size() refers to sizw of first word
 
         char firstChar = str[0][i]; // first character of first word in string
 

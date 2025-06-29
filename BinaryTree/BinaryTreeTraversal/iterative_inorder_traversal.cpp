@@ -1,7 +1,7 @@
-                            
 #include <iostream>
 #include <vector>
-
+#include<stack>
+#include<bits/stdc++.h>
 using namespace std;
 
 // Node structure for the binary tree
@@ -9,40 +9,30 @@ struct Node {
     int data;
     Node* left;
     Node* right;
-    // Constructor to initialize
-    // the node with a value
     Node(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
-// Function to perform inorder traversal
-// of the tree and store values in 'arr'
-void inorder(Node* root, vector<int> &arr){
-    // If the current node is NULL
-    // (base case for recursion), return
-    if(root == nullptr){
-        return;
-    }
-    // Recursively traverse the left subtree
-    inorder(root->left, arr);
-    // Push the current node's
-    // value into the vector
-    arr.push_back(root->data);
-    // Recursively traverse 
-    // the right subtree
-    inorder(root->right, arr);
-}
+vector<int> inOrder(Node * root){
+    stack<Node*> st;
+    vector<int> answer;
+    Node * node = root;
 
-// Function to initiate inorder traversal
-// and return the resulting vector
-vector<int> inOrder(Node* root){
-    // Create an empty vector to
-    // store inorder traversal values
-    vector<int> arr;
-    // Call the inorder traversal function
-    inorder(root, arr);
-    // Return the resulting vector
-    // containing inorder traversal values
-    return arr;
+    while(true){
+        if( node != NULL){
+            st.push(node);
+            node = node -> left;
+        }else{
+            if( st.empty() ){
+                break;
+            }
+
+            node = st.top();
+            st.pop();
+            answer.push_back(node->data);
+            node = node -> right;
+        }
+    }
+    return answer;
 }
 
 // Main function

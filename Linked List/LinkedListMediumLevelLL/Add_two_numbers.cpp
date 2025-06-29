@@ -40,8 +40,8 @@ node* reverse(node* head) {
 // Function to add two numbers represented as linked lists
 node* Add_2_LL(node* head1, node* head2) {
     // Reverse both input linked lists
-    head1 = reverse(head1);
-    head2 = reverse(head2);
+    // head1 = reverse(head1);
+    // head2 = reverse(head2);
 
     node* temp1 = head1;
     node* temp2 = head2;
@@ -79,7 +79,7 @@ node* Add_2_LL(node* head1, node* head2) {
     }
 
     // Reverse the result list back to the correct order
-    return reverse(DummyNode->next);
+    return (DummyNode->next);
 }
 
 int main() {

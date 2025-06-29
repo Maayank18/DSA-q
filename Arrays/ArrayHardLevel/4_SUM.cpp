@@ -5,69 +5,69 @@
 // BRUTE FORCE SOLUTION -> would be the worse approach as it could take 
 // upto O(n^4) as we gonna iterate among 4 loops lets see
 
-// #include <iostream>
-// #include <set>
-// #include <vector>
-// #include <algorithm> // For sort
-// using namespace std;
+#include <iostream>
+#include <set>
+#include <vector>
+#include <algorithm> // For sort
+using namespace std;
 
-// vector<vector<int>> sum_4(vector<int> arr, int target) {
-//     int size = arr.size();
-//     if (size < 4) return {}; // Return empty if less than 4 elements
+vector<vector<int>> sum_4(vector<int> arr, int target) {
+    int size = arr.size();
+    if (size < 4) return {}; // Return empty if less than 4 elements
 
-//     set<vector<int>> st;
+    set<vector<int>> st;
 
-//     for (int i = 0; i < size; i++) {
-//         for (int j = i + 1; j < size; j++) {
-//             for (int k = j + 1; k < size; k++) {
-//                 for (int l = k + 1; l < size; l++) {
-//                     if (arr[i] + arr[j] + arr[k] + arr[l] == target) {
-//                         vector<int> temp = {arr[i], arr[j], arr[k], arr[l]};
-//                         sort(temp.begin(), temp.end()); // Sort quadruplet
-//                         st.insert(temp); // Add to set
-//                     }
-//                 }
-//             }
-//         }
-//     }
+    for (int i = 0; i < size; i++) {
+        for (int j = i + 1; j < size; j++) {
+            for (int k = j + 1; k < size; k++) {
+                for (int l = k + 1; l < size; l++) {
+                    if (arr[i] + arr[j] + arr[k] + arr[l] == target) {
+                        vector<int> temp = {arr[i], arr[j], arr[k], arr[l]};
+                        sort(temp.begin(), temp.end()); // Sort quadruplet
+                        st.insert(temp); // Add to set
+                    }
+                }
+            }
+        }
+    }
 
-//     // Convert set to vector of vectors
-//     vector<vector<int>> ans(st.begin(), st.end());
-//     return ans;
-// }
+    // Convert set to vector of vectors
+    vector<vector<int>> ans(st.begin(), st.end());
+    return ans;
+}
 
-// int main() {
-//     int n;
-//     cout << "Enter the size of vector: ";
-//     cin >> n;
+int main() {
+    int n;
+    cout << "Enter the size of vector: ";
+    cin >> n;
 
-//     if (n < 4) {
-//         cout << "Size of the vector should be at least 4.\n";
-//         return 0;
-//     }
+    if (n < 4) {
+        cout << "Size of the vector should be at least 4.\n";
+        return 0;
+    }
 
-//     vector<int> arr(n);
-//     cout << "Enter the elements of the vector: ";
-//     for (int i = 0; i < n; i++) {
-//         cin >> arr[i];
-//     }
+    vector<int> arr(n);
+    cout << "Enter the elements of the vector: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
-//     int target;
-//     cout << "Enter the target sum: ";
-//     cin >> target;
+    int target;
+    cout << "Enter the target sum: ";
+    cin >> target;
 
-//     vector<vector<int>> resultant = sum_4(arr, target);
+    vector<vector<int>> resultant = sum_4(arr, target);
 
-//     cout << "Resultant quadruplets:\n";
-//     for (int i = 0; i < resultant.size(); i++) {
-//         for (int j = 0; j < resultant[i].size(); j++) {
-//             cout << resultant[i][j] << " "; // Print each element in the row
-//         }
-//         cout << endl; // Move to the next row
-//     }
+    cout << "Resultant quadruplets:\n";
+    for (int i = 0; i < resultant.size(); i++) {
+        for (int j = 0; j < resultant[i].size(); j++) {
+            cout << resultant[i][j] << " "; // Print each element in the row
+        }
+        cout << endl; // Move to the next row
+    }
 
-//     return 0;
-// }
+    return 0;
+}
 
 
 // BETTER SOLUTION INCLUDES CHOPPING DOWN OF TIME COMPLEXITY FROM

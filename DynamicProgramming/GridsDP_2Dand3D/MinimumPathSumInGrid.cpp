@@ -8,39 +8,39 @@ using namespace std;
 // TC -> Exponential -> O(2^(n+m))
 // SC -> O(n + m) (due to recursion stack)
 
-// int recur(int row, int column, vector<vector<int>> & grid){
-//     // base case 1
-//     if(row == 0 && column == 0){
-//         return grid[row][column]; // returning taht value also as it would add up
-//     }
+int recur(int row, int column, vector<vector<int>> & grid){
+    // base case 1
+    if(row == 0 && column == 0){
+        return grid[row][column]; // returning taht value also as it would add up
+    }
 
-//     // base case 2
-//     // IF in case out of boundary return such a high number that it would never be acceptde
-//     // use 1e9 instead of maxint to avoid overflow
-//     if( row < 0 || column < 0){
-//         return 1e9;
-//     }
+    // base case 2
+    // IF in case out of boundary return such a high number that it would never be acceptde
+    // use 1e9 instead of maxint to avoid overflow
+    if( row < 0 || column < 0){
+        return 1e9;
+    }
 
-//     // storing the cuurent number and then calculatinga all possible costs
-//     int up = grid[row][column] + recur(row-1,column,grid);
-//     int left = grid[row][column] + recur(row,column-1,grid);
+    // storing the cuurent number and then calculatinga all possible costs
+    int up = grid[row][column] + recur(row-1,column,grid);
+    int left = grid[row][column] + recur(row,column-1,grid);
 
-//     // retruning the minmum paths cost at every step
-//     return min(up,left);
-// }
+    // retruning the minmum paths cost at every step
+    return min(up,left);
+}
 
-// int minimumPath(int row, int column, vector<vector<int>> &grid){
-//     return recur(row-1,column-1,grid);
-// }
+int minimumPath(int row, int column, vector<vector<int>> &grid){
+    return recur(row-1,column-1,grid);
+}
 
-// int main(){
-//     int n = 3; // rows
-//     int m = 3; // columns
-//     vector<vector<int>> grid = {{1,2,3},{1,2,1},{1,1,1}};
-//     int ans = minimumPath(n,m,grid);
-//     cout<<" the minimum path sum in grid is : "<<ans<<endl;
-//     return 0;
-// }
+int main(){
+    int n = 3; // rows
+    int m = 3; // columns
+    vector<vector<int>> grid = {{1,2,3},{1,2,1},{1,1,1}};
+    int ans = minimumPath(n,m,grid);
+    cout<<" the minimum path sum in grid is : "<<ans<<endl;
+    return 0;
+}
 
 
 
@@ -55,43 +55,43 @@ using namespace std;
 // O(n + m) for the recursion stack space, since the longest path from (0,0) to (n-1,m-1) 
 // is at most n + m recursive calls deep.
 
-// int memo(int row, int column,vector<vector<int>>&grid,vector<vector<int>>&dp){
+int memo(int row, int column,vector<vector<int>>&grid,vector<vector<int>>&dp){
 
-//     // base case 1
-//     if(row == 0 && column == 0){
-//         return grid[row][column]; // returning taht value also as it would add up
-//     }
+    // base case 1
+    if(row == 0 && column == 0){
+        return grid[row][column]; // returning taht value also as it would add up
+    }
 
-//     // base case 2
-//     // IF in case out of boundary return such a high number that it would never be acceptde
-//     // use 1e9 instead of maxint to avoid overflow
-//     if( row < 0 || column < 0){
-//         return 1e9;
-//     }
+    // base case 2
+    // IF in case out of boundary return such a high number that it would never be acceptde
+    // use 1e9 instead of maxint to avoid overflow
+    if( row < 0 || column < 0){
+        return 1e9;
+    }
 
-//     if(dp[row][column] != -1){  //checking if already encountered that element
-//         return dp[row][column];
-//     }
+    if(dp[row][column] != -1){  //checking if already encountered that element
+        return dp[row][column];
+    }
 
-//     int up = grid[row][column] + memo(row-1,column,grid,dp);
-//     int left = grid[row][column] + memo(row,column-1,grid,dp);
+    int up = grid[row][column] + memo(row-1,column,grid,dp);
+    int left = grid[row][column] + memo(row,column-1,grid,dp);
 
-//     return dp[row][column] = min(up,left);
+    return dp[row][column] = min(up,left);
 
-// }
+}
 
-// int minimumPath(int row, int column, vector<vector<int>> &grid, vector<vector<int>>&dp){
-//     return memo(row-1,column-1,grid,dp);
-// }
+int minimumPath(int row, int column, vector<vector<int>> &grid, vector<vector<int>>&dp){
+    return memo(row-1,column-1,grid,dp);
+}
 
-// int main(){
-//     int n = 3; int m = 3;
-//     vector<vector<int>> grid = {{1,2,3},{1,2,1},{1,1,1}};
-//     vector<vector<int>> dp(n,vector<int>(m,-1));
-//     int ans = minimumPath(n,m,grid,dp);
-//     cout<<" the answer of minimum paths using memeosiation is :"<<ans<<endl;
-//     return 0;
-// }
+int main(){
+    int n = 3; int m = 3;
+    vector<vector<int>> grid = {{1,2,3},{1,2,1},{1,1,1}};
+    vector<vector<int>> dp(n,vector<int>(m,-1));
+    int ans = minimumPath(n,m,grid,dp);
+    cout<<" the answer of minimum paths using memeosiation is :"<<ans<<endl;
+    return 0;
+}
 
 
 
