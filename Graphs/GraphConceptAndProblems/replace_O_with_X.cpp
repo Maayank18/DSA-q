@@ -43,8 +43,8 @@ void dfs(int row, int column,
 vector<vector<char>> fill(int n, int m, vector<vector<char>> mat) {
     vector<vector<int>> visited(n, vector<int>(m, 0));
 
-    int drow[] = {-1, 0, 1, 0};
-    int dcol[] = {0, 1, 0, -1};
+    int drow[] = {-1, 0, 1, 0}; // possible direction of the rows
+    int dcol[] = {0, 1, 0, -1}; // possible direction of column
 
     // Traverse first and last row
     for (int j = 0; j < m; j++) {
